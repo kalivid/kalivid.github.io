@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量  显示echo普通使用1234echo &amp;quot;hello,world&amp;quot;# 转义换行符echo -e &amp;quot;1\t2\t3&amp;quot;  #1    2    3 彩色输出1234567891011121314151617181">
+<meta name="description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统shell脚本编程（一）">
 <meta property="og:url" content="https://8192bit.top/2018/04/08/Linux系统shell脚本编程（一）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量  显示echo普通使用1234echo &amp;quot;hello,world&amp;quot;# 转义换行符echo -e &amp;quot;1\t2\t3&amp;quot;  #1    2    3 彩色输出1234567891011121314151617181">
+<meta property="og:description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-08T09:47:15.350Z">
+<meta property="og:updated_time" content="2018-04-09T01:59:29.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统shell脚本编程（一）">
-<meta name="twitter:description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量  显示echo普通使用1234echo &amp;quot;hello,world&amp;quot;# 转义换行符echo -e &amp;quot;1\t2\t3&amp;quot;  #1    2    3 彩色输出1234567891011121314151617181">
+<meta name="twitter:description" content="shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量">
 
 
 
@@ -491,6 +491,7 @@
       
         <blockquote class="blockquote-center"><p>shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><h4 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h4><p><strong>普通使用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">echo &quot;hello,world&quot;</div><div class="line"></div><div class="line"># 转义换行符</div><div class="line">echo -e &quot;1\t2\t3&quot;  #1    2    3</div></pre></td></tr></table></figure></p>
 <p><strong>彩色输出</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># 设置字体为红色，背景色为绿色</div><div class="line">echo -e &quot;\e[1;31;42mThis is red text\e[0m&quot;</div><div class="line"></div><div class="line"># 1 为颜色饱和度</div><div class="line"># 31 为字体颜色，只需要背景色时，填1是加粗，0是不加粗，默认是0</div><div class="line"># 42 为背景颜色</div><div class="line"></div><div class="line"># 字体颜色码</div><div class="line"># 重置=0，黑色=30，红色=31，绿色=32，黄色=33，蓝色=34，洋红=35，青色=36，白色=37</div><div class="line"># 背景色颜色码</div><div class="line"># 重置=0，黑色=40，红色=41，绿色=42，黄色=43，蓝色=44，洋红=45，青色=46，白色=47</div><div class="line"></div><div class="line"># 字体闪烁</div><div class="line"># 普通</div><div class="line">echo -e &quot;\033[37;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"># 加粗</div><div class="line">echo -e &quot;\033[1;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"># 加粗并加下划线</div><div class="line">echo -e &quot;\033[1;4;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"></div><div class="line">## 红色数字处还有其他数字参数：0 关闭所有属性、1 设置高亮度（加粗）、4 下划线、5 闪烁、7 反显、8 消隐</div></pre></td></tr></table></figure></p>
 <p><strong>PS：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;  # 允许通过$符号引用其他变量值</div><div class="line">&apos;&apos;  # $符号会被原样输出</div><div class="line">``  # 将命令执行结果赋值给变量</div><div class="line"></div><div class="line">a=&quot;hello,world my girl&quot;</div><div class="line">echo $&#123;a:12&#125;  #my girl  从第几个字符开始截取</div><div class="line">echo $&#123;a:12:2&#125; #my    从第几个字符开始并截取指定字符数</div><div class="line"></div><div class="line">$&#123;字符串#匹配字&#125;       # 从开头删除最短匹配字符串 </div><div class="line">$&#123;字符串##匹配字&#125;    # 从开头删除最长匹配字符串</div><div class="line">$&#123;字符串%匹配字&#125;      # 从结尾删除最短匹配字符串</div><div class="line">$&#123;字符串%%匹配字&#125;  # 从结尾删除最长匹配字符串</div></pre></td></tr></table></figure></p>

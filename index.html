@@ -683,75 +683,15 @@
 
       
         
-          
-            <blockquote class="blockquote-center"><p>shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量</p>
+          <blockquote class="blockquote-center"><p>shell脚本是以行为单位，在执行脚本的时候会分解成一行一行执行，shell脚本主要由注释、命令、变量组成。本文主要介绍了显示（输出）、运算和常用变量</p>
 </blockquote>
-<h3 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h3><h4 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h4><p><strong>普通使用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">echo &quot;hello,world&quot;</div><div class="line"></div><div class="line"># 转义换行符</div><div class="line">echo -e &quot;1\t2\t3&quot;  #1    2    3</div></pre></td></tr></table></figure></p>
-<p><strong>彩色输出</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># 设置字体为红色，背景色为绿色</div><div class="line">echo -e &quot;\e[1;31;42mThis is red text\e[0m&quot;</div><div class="line"></div><div class="line"># 1 为颜色饱和度</div><div class="line"># 31 为字体颜色，只需要背景色时，填1是加粗，0是不加粗，默认是0</div><div class="line"># 42 为背景颜色</div><div class="line"></div><div class="line"># 字体颜色码</div><div class="line"># 重置=0，黑色=30，红色=31，绿色=32，黄色=33，蓝色=34，洋红=35，青色=36，白色=37</div><div class="line"># 背景色颜色码</div><div class="line"># 重置=0，黑色=40，红色=41，绿色=42，黄色=43，蓝色=44，洋红=45，青色=46，白色=47</div><div class="line"></div><div class="line"># 字体闪烁</div><div class="line"># 普通</div><div class="line">echo -e &quot;\033[37;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"># 加粗</div><div class="line">echo -e &quot;\033[1;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"># 加粗并加下划线</div><div class="line">echo -e &quot;\033[1;4;31;5mMySQL Server Stop...\033[39;49;0m&quot;</div><div class="line"></div><div class="line">## 红色数字处还有其他数字参数：0 关闭所有属性、1 设置高亮度（加粗）、4 下划线、5 闪烁、7 反显、8 消隐</div></pre></td></tr></table></figure></p>
-<p><strong>PS：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;  # 允许通过$符号引用其他变量值</div><div class="line">&apos;&apos;  # $符号会被原样输出</div><div class="line">``  # 将命令执行结果赋值给变量</div><div class="line"></div><div class="line">a=&quot;hello,world my girl&quot;</div><div class="line">echo $&#123;a:12&#125;  #my girl  从第几个字符开始截取</div><div class="line">echo $&#123;a:12:2&#125; #my    从第几个字符开始并截取指定字符数</div><div class="line"></div><div class="line">$&#123;字符串#匹配字&#125;       # 从开头删除最短匹配字符串 </div><div class="line">$&#123;字符串##匹配字&#125;    # 从开头删除最长匹配字符串</div><div class="line">$&#123;字符串%匹配字&#125;      # 从结尾删除最短匹配字符串</div><div class="line">$&#123;字符串%%匹配字&#125;  # 从结尾删除最长匹配字符串</div></pre></td></tr></table></figure></p>
-<h4 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h4><p><strong>使用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">printf &quot;%-5s %-10s %-4s\n&quot; NO Name Mark</div><div class="line">printf &quot;%-5s %-10s %-4.2f\n&quot; 01 Tom 90.3456</div><div class="line">printf &quot;%-5s %-10s %-4.2f\n&quot; 02 Jack 89.2345</div><div class="line">printf &quot;%-5s %-10s %-4.2f\n&quot; 03 Jeff 98.4323</div></pre></td></tr></table></figure></p>
-<ul>
-<li>%-5s 表示左对齐且宽度为5的字符串代替（-表示左对齐）， 不使用表示右对齐</li>
-<li>%-4.2f 表示左对齐宽度为4，保留两位小数</li>
-</ul>
-<p><strong>常用格式替代符</strong></p>
-<ul>
-<li>%s 字符串</li>
-<li>%f 浮点数</li>
-<li>%% %字符串</li>
-</ul>
-<p><strong>常用转义序列</strong></p>
-<ul>
-<li>\r 回车</li>
-<li>\n 换行</li>
-<li>\f 换页</li>
-<li>\t 水平制表符</li>
-<li>\ 反斜杠字符串</li>
-</ul>
-<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><h4 id="let运算"><a href="#let运算" class="headerlink" title="let运算"></a>let运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">num1=10</div><div class="line">num2=7</div><div class="line">let result=num1+num2</div><div class="line">echo $result</div></pre></td></tr></table></figure>
-<ul>
-<li>自加/减1  let result++/let result–</li>
-<li>let rusult-=10等于result=result-10</li>
-</ul>
-<h4 id="操作符-运算"><a href="#操作符-运算" class="headerlink" title="操作符[]运算"></a>操作符[]运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">num1=10</div><div class="line">num2=7</div><div class="line">result=$[$num1+num2]</div><div class="line">echo &quot;$result&quot;</div><div class="line"></div><div class="line"># PS []里面可以引用$</div></pre></td></tr></table></figure>
-<h4 id="运算-1"><a href="#运算-1" class="headerlink" title="(())运算"></a>(())运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">num1=10</div><div class="line">num2=6</div><div class="line">result=$((num1+num2))</div><div class="line">echo &quot;$result&quot;</div><div class="line"></div><div class="line"># PS (())里面也可以引用$</div></pre></td></tr></table></figure>
-<h4 id="expr运算"><a href="#expr运算" class="headerlink" title="expr运算"></a>expr运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">num1=10</div><div class="line">num2=6</div><div class="line">result=`expr $num1 + $num2` </div><div class="line">echo &quot;$result&quot;</div><div class="line"></div><div class="line"># PS: 注意加法符号两端的空格一定要空</div></pre></td></tr></table></figure>
-<p><strong>常用运算符</strong></p>
-<ul>
-<li>加    +</li>
-<li>减    -</li>
-<li>乘    \*</li>
-<li>除    /</li>
-<li>取余 %</li>
-</ul>
-<h4 id="精密运算bc"><a href="#精密运算bc" class="headerlink" title="精密运算bc"></a>精密运算bc</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">echo &quot;1.212*3&quot; | bc # 3.636</div><div class="line"></div><div class="line">echo &quot;scale=2;3/8&quot; | bc # 0.37 scale=2是将bc输出结果的小数位设置为2</div><div class="line"></div><div class="line"># 进制转换</div><div class="line">abc=192</div><div class="line">echo &quot;obase=2;$abc&quot; | bc  # 11000000 十进制转二进制</div><div class="line"></div><div class="line">abc=11000000</div><div class="line">echo &quot;obase=10;$abc&quot; | bc # 192 二进制转十进制</div><div class="line"></div><div class="line"># 计算平方和平方根</div><div class="line">echo &quot;10^10&quot; | bc</div><div class="line">echo &quot;sqrt(100)&quot; | bc</div></pre></td></tr></table></figure>
-<h3 id="常用变量"><a href="#常用变量" class="headerlink" title="常用变量"></a>常用变量</h3><h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p><strong>环境变量配置文件</strong></p>
-<ul>
-<li>全局：/etc/profile</li>
-<li>用户：~/.bash_profile</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 定义变量</div><div class="line">export a=1 或 a=1  # 临时生效， 永久生效需写入文件</div><div class="line"></div><div class="line"># 取消变量</div><div class="line">unset a</div></pre></td></tr></table></figure>
-<h4 id="位置变量"><a href="#位置变量" class="headerlink" title="位置变量"></a>位置变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./test.sh one two three four five six seven</div></pre></td></tr></table></figure>
-<ul>
-<li>$0 表示文件名本身</li>
-<li>$1~9 表示one~nine</li>
-</ul>
-<h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><ul>
-<li>$# : 命令行中位置参数的个数</li>
-<li>$* : 所有位置参数的内容</li>
-<li>$? : 上一条命令执行后返回的状态，返回为0时，表示执行正常</li>
-<li>$_ : 上一条命令的参数</li>
-<li>$$ : 当前所在进程的进程号</li>
-<li>$! : 后台运行的最后一个进程号<h3 id="执行方法"><a href="#执行方法" class="headerlink" title="执行方法"></a>执行方法</h3></li>
-</ul>
-<ol>
-<li><strong>sh script-name</strong>  这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常使用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。推荐使用这种方法。</li>
-<li><strong>./script-name或绝对路径/script-name</strong> 在当前路径下执行脚本(脚本需要有执行权限)</li>
-<li><strong>source script-name或. script-name</strong> 读入脚本并执行，即将脚本中的变量加载到当前shell中执行，而不是产生一个子shell来执行文件中的命令</li>
-</ol>
-<p><strong>例子：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># -rwxr-xr-x. 1 root root 35 3月  23 12:42 test.sh</div><div class="line">#! /bin/bash</div><div class="line">name=hello</div><div class="line">echo $name</div><div class="line"></div><div class="line"></div><div class="line"># ./test.sh</div><div class="line">echo $name  # 返回结果为空 </div><div class="line"></div><div class="line"># . test.sh</div><div class="line">echo $name  # 返回结果为hello</div><div class="line"></div><div class="line">#原因： ./test.sh 是开启一个子进程执行，故当前进程无name变量；而. test.sh是将shell脚本中的内容copy至当前进程并执行，所以有name变量</div></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/08/Linux系统shell脚本编程（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
