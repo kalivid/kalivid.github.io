@@ -4,8 +4,31 @@
 
     
   <url>
+    <loc>https://8192bit.top/2019/09/19/ansible%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2020-04-29T08:39:31.764Z</lastmod>
+    <data>
+        <display>
+        <title>ansible简介</title>
+        <pubTime>2019-09-19T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://8192bit.top/2019/09/18/ansible%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2020-04-29T08:30:49.172Z</lastmod>
+    <lastmod>2020-04-29T08:35:46.250Z</lastmod>
     <data>
         <display>
         <title>ansible简介</title>
