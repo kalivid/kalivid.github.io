@@ -4,11 +4,126 @@
 
     
   <url>
-    <loc>https://8192bit.top/2019/09/29/ansible%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2020-04-29T08:45:57.539Z</lastmod>
+    <loc>https://8192bit.top/2019/09/24/ansible%E7%9A%84Ad-Hoc%EF%BC%88%E4%B8%83%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:20:33.627Z</lastmod>
     <data>
         <display>
-        <title>ansible安装</title>
+        <title>ansible的Ad-Hoc（七）</title>
+        <pubTime>2019-09-24T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/25/ansible%E4%B8%8E%E6%AD%A3%E5%88%99%EF%BC%88%E5%85%AD%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:17:48.512Z</lastmod>
+    <data>
+        <display>
+        <title>ansible与正则（六）</title>
+        <pubTime>2019-09-25T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/26/ansible%E7%9A%84Inventory%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:15:42.016Z</lastmod>
+    <data>
+        <display>
+        <title>ansible_Inventory配置及详解（五）</title>
+        <pubTime>2019-09-26T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/27/ansible%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9%EF%BC%88%E5%9B%9B%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:13:13.209Z</lastmod>
+    <data>
+        <display>
+        <title>ansible相关命令及常用选项（四）</title>
+        <pubTime>2019-09-27T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/28/ansible%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%89%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:11:15.025Z</lastmod>
+    <data>
+        <display>
+        <title>ansible配置文件详解（三）</title>
+        <pubTime>2019-09-28T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/29/ansible%E5%AE%89%E8%A3%85%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:10:55.917Z</lastmod>
+    <data>
+        <display>
+        <title>ansible安装（二）</title>
         <pubTime>2019-09-29T08:20:18.000Z</pubTime>
         
         <tag>ansible</tag>
@@ -27,11 +142,11 @@
 
     
   <url>
-    <loc>https://8192bit.top/2019/09/30/ansible%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2020-04-29T08:45:52.313Z</lastmod>
+    <loc>https://8192bit.top/2019/09/30/ansible%E7%AE%80%E4%BB%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    <lastmod>2020-04-29T09:10:37.048Z</lastmod>
     <data>
         <display>
-        <title>ansible简介</title>
+        <title>ansible简介（一）</title>
         <pubTime>2019-09-30T08:20:18.000Z</pubTime>
         
         <tag>ansible</tag>

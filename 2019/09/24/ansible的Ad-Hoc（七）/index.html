@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ansible," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="ansible命令行常用选项及参数详解。">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible的Ad-Hoc（七）">
+<meta property="og:url" content="https://8192bit.top/2019/09/24/ansible的Ad-Hoc（七）/index.html">
+<meta property="og:site_name" content="8192bit">
+<meta property="og:description" content="ansible命令行常用选项及参数详解。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-29T09:20:33.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ansible的Ad-Hoc（七）">
+<meta name="twitter:description" content="ansible命令行常用选项及参数详解。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://8192bit.top/2019/09/24/ansible的Ad-Hoc（七）/"/>
+
+
+
+
+
+  <title>ansible的Ad-Hoc（七） | 8192bit</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-106605857-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8a73c5ffa38bc57de5b8c561a3beaa0b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">8192bit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/24/ansible的Ad-Hoc（七）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="8192bit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8192bit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ansible的Ad-Hoc（七）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T16:20:18+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/自动化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/24/ansible的Ad-Hoc（七）/" class="leancloud_visitors" data-flag-title="ansible的Ad-Hoc（七）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span> ℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,754 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>ansible命令行常用选项及参数详解。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="执行shell"><a href="#执行shell" class="headerlink" title="执行shell"></a>执行shell</h3><h4 id="command模块"><a href="#command模块" class="headerlink" title="command模块"></a>command模块</h4><p>command模块用于在给的节点上运行系统命令，比如echo ls等。<br>它不会通过shell处理命令，因此不支持<code>$HOME</code>这样的变量，以及<code>&lt;</code>,<code>&gt;</code>,<code>|</code>,<code>;</code>和<code>$</code>等都是无效的。</p>
+<h5 id="参数选项"><a href="#参数选项" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chdir</td>
+<td>运行command命令前先cd到这个目录</td>
+</tr>
+<tr>
+<td>creates</td>
+<td>如果这个参数对应的文件存在，就不运行command</td>
+</tr>
+<tr>
+<td>free_form</td>
+<td>需要执行的脚本</td>
+</tr>
+<tr>
+<td>executable</td>
+<td>改变用来执行命令的shell，可执行文件的绝对路径。</td>
+</tr>
+<tr>
+<td>removes</td>
+<td>如果这个参数对应的文件存在，就运行command</td>
+</tr>
+</tbody>
+</table>
+<h5 id="command示例"><a href="#command示例" class="headerlink" title="command示例"></a>command示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ansible all -m command -a &quot;cat /etc/passwd&quot;    # 执行成功</div><div class="line">ansible all -m command -a &quot;cat /etc/passwd|grep root&quot;    # 执行失败</div><div class="line">ansible all -m command -a &quot;ls /root creates=1.sh&quot;    # 1.sh文件存在，就不执行</div><div class="line">ansible all -m command -a &quot;ls /root removes=1.sh&quot;    #</div></pre></td></tr></table></figure>
+<h4 id="shell模块"><a href="#shell模块" class="headerlink" title="shell模块"></a>shell模块</h4><p>让远程主机在shell进程下执行命令，从而支持shell的特性，如管道等。与<code>command</code>模块几乎相同，但在执行命令的时候使用的是<code>/bin/sh</code>。</p>
+<h5 id="参数选项-1"><a href="#参数选项-1" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chdir</td>
+<td>运行command命令前先cd到这个目录</td>
+</tr>
+<tr>
+<td>creates</td>
+<td>如果这个参数对应的文件存在，就不运行command</td>
+</tr>
+<tr>
+<td>free_form</td>
+<td>需要执行的脚本</td>
+</tr>
+<tr>
+<td>executable</td>
+<td>改变用来执行命令的shell，可执行文件的绝对路径。</td>
+</tr>
+<tr>
+<td>removes</td>
+<td>如果这个参数对应的文件存在，就运行command</td>
+</tr>
+</tbody>
+</table>
+<h5 id="shell示例"><a href="#shell示例" class="headerlink" title="shell示例"></a>shell示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># shell示例</div><div class="line">ansible all -m shell -a &quot;cat /etc/passwd|grep root&quot; # 执行成功</div><div class="line">all -m shell -a &quot;echo `ip a|grep 10.|grep inet`|cut -f2 -d&apos; &apos;|cut -f1 -d&apos;/&apos;&quot;    # 执行成功但是输出结果的IP地址全是主控端的IP</div><div class="line">ansible all -m shell -a &apos;echo `ip a|grep 10.|grep inet`|cut -f2 -d&quot; &quot;|cut -f1 -d&quot;/&quot;&apos;    # 输出各自IP &apos;&apos;和&quot;&quot;的区别</div></pre></td></tr></table></figure>
+<h4 id="raw模块"><a href="#raw模块" class="headerlink" title="raw模块"></a>raw模块</h4><p><code>raw</code>模块主要用于执行一些低级的，脏的SSH命令，而不是通过<code>command</code>模块。 <code>raw</code>模块只适用于下列两种场景，第一种情况是在较老的（Python 2.4和之前的版本）主机上，另一种情况是对任何没有安装Python的设备（如路由器）。 在任何其他情况下，使用<code>shell</code>或<code>command</code>模块更为合适。</p>
+<h5 id="参数选项-2"><a href="#参数选项-2" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>free_form</td>
+<td>需要执行的脚本</td>
+</tr>
+<tr>
+<td>executable</td>
+<td>改变用来执行命令的shell，可执行文件的绝对路径。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="raw示例"><a href="#raw示例" class="headerlink" title="raw示例"></a>raw示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ansible all -m raw -a &quot;pwd&quot;</div></pre></td></tr></table></figure>
+<h4 id="script模块"><a href="#script模块" class="headerlink" title="script模块"></a>script模块</h4><ul>
+<li><code>script</code>模块的作用是将本地script传送到远程主机之后执行</li>
+<li>给定的脚本将通过远程节点上的shell环境进行处理</li>
+</ul>
+<h5 id="参数选项-3"><a href="#参数选项-3" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>creates</td>
+<td>如果这个参数对应的文件存在，就不运行command</td>
+</tr>
+<tr>
+<td>free_form</td>
+<td>需要执行的脚本</td>
+</tr>
+<tr>
+<td>removes</td>
+<td>如果这个参数对应的文件存在，就运行command</td>
+</tr>
+</tbody>
+</table>
+<h5 id="script示例"><a href="#script示例" class="headerlink" title="script示例"></a>script示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ansible all -m script -a &quot;./1.sh&quot;</div></pre></td></tr></table></figure>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">如果你想安全可靠的执行命令，请使用`command`模块。</div><div class="line">&apos;&apos;和&quot;&quot;中``符号效果是不一样的</div><div class="line">当script模块的脚本执行时，ssh连接插件将通过`-tt`强制`伪tty`分配。`伪ttys`没有stderr通道，所有stderr被发送到标准输出。如果需要标准输出和标准错误分离，请使用到`copy`模块。</div></pre></td></tr></table></figure>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><ul>
+<li>linux系统用户管理：user模块</li>
+<li>windows系统用户管理：win_user模块</li>
+</ul>
+<h4 id="user模块"><a href="#user模块" class="headerlink" title="user模块"></a>user模块</h4><h5 id="参数选项-4"><a href="#参数选项-4" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必选项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>append</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>yes:添加group<br>no:变更group,只设置groups指定的group组</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>可选设置用户账户的描述</td>
+</tr>
+<tr>
+<td>createhome</td>
+<td>no</td>
+<td>yes</td>
+<td>yes<br>no</td>
+<td>默认yes，当创建用户时或家目录不存在时，为用户创建HOME目录</td>
+</tr>
+<tr>
+<td>expires(1.9版本增加)</td>
+<td>no</td>
+<td>无</td>
+<td></td>
+<td>1.9版本的新增功能，用户过期时间，不支持的平台该参数将被忽略</td>
+</tr>
+<tr>
+<td>force</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>强制，当和state=absent结合时，效果等同于userdel –force</td>
+</tr>
+<tr>
+<td>generate_ssh_key</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>是否生成SSH key,不会覆盖已有的 SSH key</td>
+</tr>
+<tr>
+<td>group</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置用户属组</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>设置用户附加群组，使用逗号分隔多个群组，如果参数为空（’groups=’），就删除用户所有附加组（属组不受影响）</td>
+</tr>
+<tr>
+<td>home</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置用户家目录</td>
+</tr>
+<tr>
+<td>login_class</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置FreeBSD、OpenBSD、NetBSD系统的用户class</td>
+</tr>
+<tr>
+<td>move_home</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>设置为yes，结合使用home=，临时迁移用户家目录到特定目录</td>
+</tr>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置用户密码为该项指定的密码（加密后的密码），在Darwin系统，该选项必须是明文。</td>
+</tr>
+<tr>
+<td>non_unique</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>（可选）和-u结合使用，允许改变用户ID为非唯一值</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>结合state=absent，使用相当于userdel –remove</td>
+</tr>
+<tr>
+<td>seuser(2.1版本增加)</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置seuser类型启用SElinux</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>(可选)设置用户shell</td>
+</tr>
+<tr>
+<td>skeleton</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>（可选）设置用户的skel目录，需和createhome参数结合使用</td>
+</tr>
+<tr>
+<td>ssh_key_bits</td>
+<td>no</td>
+<td>2048</td>
+<td></td>
+<td>（可选）指定生成的SSH key加密位数</td>
+</tr>
+<tr>
+<td>ssh_key_comment</td>
+<td>no</td>
+<td>ansible-generated on $HOSTNAME</td>
+<td></td>
+<td>(可选)定义SSH key注释</td>
+</tr>
+<tr>
+<td>ssh_key_file</td>
+<td>no</td>
+<td>.ssh/id_rsa</td>
+<td></td>
+<td>(可选)指定SSH key文件名，如果该文件名是相对路径，则默认路径为用户家目录</td>
+</tr>
+<tr>
+<td>ssh_key_passphrase</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>（可选）设置SSH key 密码，如果没有提供密码，则默认没有加密</td>
+</tr>
+<tr>
+<td>ssh_key_type</td>
+<td>no</td>
+<td>rsa</td>
+<td></td>
+<td>（可选）指定SSH key类型，具体可用的SSH key类型取决于目标主机</td>
+</tr>
+<tr>
+<td>state</td>
+<td>no</td>
+<td>present</td>
+<td>present<br>absent</td>
+<td>present:新建<br>absent删除</td>
+</tr>
+<tr>
+<td>system</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>当创建新账户时，该选项为yes,为用户设置系统账户，该设置对已经存在的用户无效</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>（可选）设置用户的UID</td>
+</tr>
+<tr>
+<td>update_password(1.3版本增加)</td>
+<td>no</td>
+<td>always</td>
+<td>always<br>on_create</td>
+<td>always:只用当密码不相同时才会更新密码<br>on_create只为新用户设置密码</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user示例"><a href="#user示例" class="headerlink" title="user示例"></a>user示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># 新增用户dba,使用BASH shell,附加组为root,家目录/home/dba/， groups dba 可以查看用户现在的属组及附加组</div><div class="line">ansible 10.1.1.122 -m user -a &quot;name=dba shell=/bin/sh append=yes groups=root home=/home/dba/ state=present&quot;</div><div class="line"></div><div class="line"># 修改用户属组 chage -l dba</div><div class="line">ansible 10.1.1.122 -m user -a &quot;name=dba append=no groups=&quot;</div><div class="line"></div><div class="line"># 修改用户属性，过期时间为2018/12/11 14:30</div><div class="line">ansible 10.1.1.122 -m user -a &quot;name=dba expires=1544509800&quot;</div><div class="line"></div><div class="line"># 删除用户并删除家目录</div><div class="line"> ansible 10.1.1.122 -m user -a &quot;name=dba state=absent remove=yes&quot;</div><div class="line"></div><div class="line"># 新增用户tom并设置密码123</div><div class="line">ansible 10.1.1.122 -m user -a &apos;name=tom state=present password=miTF5KM/1uCw2&apos;</div><div class="line"></div><div class="line">PS:</div><div class="line">当参数里面有password时，要用单引号，防止有特殊字符被转义</div><div class="line">password=字符串并非真正密码，获取方式（123为真正密码，mima为加盐字符串）:</div><div class="line">1. python -c &apos;import crypt; print crypt.crypt(&quot;123&quot;, &quot;mima&quot;)&apos;</div><div class="line">2. openssl passwd -salt mima 123</div><div class="line">3. ansible localhost -m debug -a &quot;msg=&#123;&#123;&apos;123&apos;|password_hash(&apos;sha512&apos;,&apos;mima&apos;)&#125;&#125;&quot; # 官网推荐</div></pre></td></tr></table></figure>
+<h4 id="group模块"><a href="#group模块" class="headerlink" title="group模块"></a>group模块</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必选项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>新建的组名</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>组的gid</td>
+</tr>
+<tr>
+<td>state</td>
+<td>no</td>
+<td>present</td>
+<td>absent 删除组<br>present 创建组</td>
+<td>组的状态</td>
+</tr>
+</tbody>
+</table>
+<h5 id="group示例"><a href="#group示例" class="headerlink" title="group示例"></a>group示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 1. 创建组</div><div class="line">ansible 10.1.1.11 -m group -a &quot;name=test gid=8888 state=present&quot;</div><div class="line"></div><div class="line">ansible 10.1.1.11 -m group -a &quot;name=test gid=8888&quot;</div><div class="line"></div><div class="line">PS： 验证方法：cat /etc/group|grep test</div><div class="line"></div><div class="line"># 2. 删除组</div><div class="line">ansible 10.1.1.11 -m group -a &quot;name=test gid=8888 state=absent&quot;</div><div class="line"></div><div class="line">PS: 删除组前，要先删除用户，不然会报错</div></pre></td></tr></table></figure>
+<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><h4 id="file模块"><a href="#file模块" class="headerlink" title="file模块"></a>file模块</h4><p>file模块可以帮助我们完成一些对文件的基本操作，比如，创建文件或目录、删除文件或目录、修改文件权限等</p>
+<h5 id="参数选项-5"><a href="#参数选项-5" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必选项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>follow</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>表示文件系统的链接，如果存在，应该follow</td>
+</tr>
+<tr>
+<td>force</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>当state=link的时候，可配合此参数强制创建链接文件，当force=yes时，表示强制创建链接文件，不过强制创建链接文件分为两种情况，情况一：当你要创建的链接文件指向的源文件并不存在时，使用此参数，可以先强制创建出链接文件。情况二：当你要创建链接文件的目录中已经存在与链接文件同名的文件时，将force设置为yes，回将同名文件覆盖为链接文件，相当于删除同名文件，创建链接文件。情况三：当你要创建链接文件的目录中已经存在与链接文件同名的文件，并且链接文件指向的源文件也不存在，这时会强制替换同名文件为链接文件。</td>
+</tr>
+<tr>
+<td>group</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td>用于指定被操作文件的属组，属组对应的组必须在远程主机中存在，否则会报错。</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td>用于指定被操作文件的权限，比如，如果想要将文件权限设置为”rw-r-x—“，则可以使用mode=650进行设置，或者使用mode=0650，效果也是相同的，如果你想要设置特殊权限，比如为二进制文件设置suid，则可以使用mode=4700</td>
+</tr>
+<tr>
+<td>ownerno</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td>用于指定被操作文件的属主，属主对应的用户必须在远程主机中存在，否则会报错。</td>
+</tr>
+<tr>
+<td>path</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>必须参数，用于指定要操作的文件或目录，在之前版本的ansible中，使用dest参数或者name参数指定要操作的文件或目录，为了兼容之前的版本，使用dest或name也可以</td>
+</tr>
+<tr>
+<td>recurse</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>当要操作的文件为目录，将recurse设置为yes，可以递归的修改目录中文件的属性。</td>
+</tr>
+<tr>
+<td>selevel</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>serole</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>setype</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>seuser</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>src</td>
+<td>no</td>
+<td>None</td>
+<td></td>
+<td>当state设置为link或者hard时，表示我们想要创建一个软链或者硬链，所以，我们必须指明软链或硬链链接的哪个文件，通过src参数即可指定链接源</td>
+</tr>
+<tr>
+<td>state</td>
+<td>no</td>
+<td>file</td>
+<td>file<br>link<br>hard<br>directory<br>touch<br>absent</td>
+<td>file：文件<br>link：软连接<br>hard：硬链接<br>directory：目录<br>touch：文件<br>absent：删除</td>
+</tr>
+<tr>
+<td>unsafe_writes</td>
+<td>no</td>
+<td>False</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="file示例"><a href="#file示例" class="headerlink" title="file示例"></a>file示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"># 在10.1.1.* 的主机上/root创建一个名为testdir的目录</div><div class="line">ansible 10.1.1.* -m file -a &quot;path=/root/testdir state=directory&quot;</div><div class="line"></div><div class="line"># 在10.1.1.122主机上创建一个名为testfile文件，如果文件存在，则更新时间戳，不修改文件内容</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/testfile state=touch&quot;</div><div class="line"></div><div class="line"># 为testfile创建一个软连接，testfile存在</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/soft_testdir state=link src=/root/testdir/testfile&quot;</div><div class="line"></div><div class="line"># 为testfile创建一个硬连接，testfile存在</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/hard_testdir state=hard src=/root/testdir/testfile&quot;</div><div class="line"></div><div class="line"># 在创建连接文件时，如果源文件不存在或者连接文件与其他文件同名时，强制覆盖同名文件并创建连接文件</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/soft_testdir state=link src=sourcefile force=yes&quot;</div><div class="line"></div><div class="line"></div><div class="line"># 删除文件</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/testfile state=absent&quot;</div><div class="line"></div><div class="line"># 指定属主属组创建文件</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/testfile state=touch owner=ftp group=games&quot;</div><div class="line"></div><div class="line"># 修改文件权限</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/testfile state=touch mode=0764&quot;</div><div class="line"></div><div class="line"># 递归修改文件及目录的权限</div><div class="line">ansible 10.1.1.122 -m file -a &quot;path=/root/testdir/ state=directory owner=ftp group=games mode=0764 recurse=yes&quot;</div></pre></td></tr></table></figure>
+<h4 id="copy模块"><a href="#copy模块" class="headerlink" title="copy模块"></a>copy模块</h4><h5 id="参数选项-6"><a href="#参数选项-6" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填</th>
+<th>默认</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backup</td>
+<td>no</td>
+<td>no</td>
+<td>yes <br> no</td>
+<td>是否创建备份文件，使用时间戳</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>当使用content替代src的时候，可以把文档中内容设定为特定值</td>
+</tr>
+<tr>
+<td>Dest</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>文件复制的目的地址</td>
+</tr>
+<tr>
+<td>Follow</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>表示文件系统的链接，如果存在，应该follow</td>
+</tr>
+<tr>
+<td>group</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件所属组，相当于chown</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件属性，0644，记住保留前面的0</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件所属用户</td>
+</tr>
+<tr>
+<td>directory_mode</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>设定目录的权限，只有在新建的时候才会使用，不会影响已经存在的目录</td>
+</tr>
+<tr>
+<td>remote_src</td>
+<td>no</td>
+<td>true</td>
+<td>true<br>false</td>
+<td>False表示src文件在本机上，True表示src在远程主机上</td>
+</tr>
+<tr>
+<td>src</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>本地存在的目录文件</td>
+</tr>
+<tr>
+<td>force</td>
+<td>no</td>
+<td>yes</td>
+<td>yes<br>no</td>
+<td>是否覆盖</td>
+</tr>
+<tr>
+<td>validate</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>复制前是否需要检验复制的目的地</td>
+</tr>
+</tbody>
+</table>
+<h5 id="copy示例"><a href="#copy示例" class="headerlink" title="copy示例"></a>copy示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 将本地文件copy给10.1.1.123的/root/下</div><div class="line">ansible 10.1.1.123 -m copy -a &quot;src=/root/testdir/copyfile dest=/root/&quot;</div><div class="line"></div><div class="line"># 在10.1.1.123创建一个内容为aaa/r/nbbb，名字为testtouch</div><div class="line">ansible 10.1.1.123 -m copy -a &quot;content=aaa\r\nbbb dest=/root/testdir/testtouch&quot;</div><div class="line"></div><div class="line"># 将本地文件copy给10.1.1.124的/root/下,并指定属组属主及权限</div><div class="line">ansible 10.1.1.124 -m copy -a &quot;src=/root/testdir/copyfile dest=/root/ owner=ftp group=games mode=0764&quot;</div><div class="line"></div><div class="line"># 将本地文件copy给10.1.1.124的/root/下，如果有同名文件则不覆盖</div><div class="line">ansible 10.1.1.124 -m copy -a &quot;src=/root/testdir/copyfile dest=/root/ force=no&quot;</div></pre></td></tr></table></figure>
+<h4 id="fetch模块"><a href="#fetch模块" class="headerlink" title="fetch模块"></a>fetch模块</h4><h5 id="参数选项-7"><a href="#参数选项-7" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dest</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>用来存放文件的目录，例如存放目录为backup，源文件名称为/etc/profile在主机pythonserver中，那么保存为/backup/pythonserver/etc/profile</td>
+</tr>
+<tr>
+<td>fail_on_missing</td>
+<td>no</td>
+<td>yes</td>
+<td>yes<br>no</td>
+<td>当源文件不存在的时候，标识为失败</td>
+</tr>
+<tr>
+<td>flat</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>允许覆盖默认行为从hostname/path到/file的，如果dest以/结尾，它将使用源文件的基础名称</td>
+</tr>
+<tr>
+<td>src</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>在远程拉取的文件，并且必须是一个file，不能是目录</td>
+</tr>
+<tr>
+<td>validate_checksum</td>
+<td>no</td>
+<td>yes</td>
+<td>yes<br>no</td>
+<td>当文件fetch之后进行md5检查</td>
+</tr>
+</tbody>
+</table>
+<h5 id="fetch示例"><a href="#fetch示例" class="headerlink" title="fetch示例"></a>fetch示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 从10.1.1.123拉取文件</div><div class="line">ansible 10.1.1.123 -m fetch -a &quot;src=/root/copyfile dest=/root/testdir&quot;</div></pre></td></tr></table></figure>
+<h4 id="get-url模块"><a href="#get-url模块" class="headerlink" title="get_url模块"></a>get_url模块</h4><h5 id="参数详情"><a href="#参数详情" class="headerlink" title="参数详情"></a>参数详情</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>下载时文件存在且不一致，会将源文件以时间戳为后缀进行备份</td>
+</tr>
+<tr>
+<td>checksum</td>
+<td>no</td>
+<td></td>
+<td>md5:<br>sha256:</td>
+<td>校验下载文件，校验通过才下载</td>
+</tr>
+<tr>
+<td>dest</td>
+<td>yes</td>
+<td></td>
+<td>绝对路径</td>
+<td>文件下载要到什么地方，目录不存在，无法下载；指定为具体文件名时，文件存在，需要结合force=yes，强制替换文件内容</td>
+</tr>
+<tr>
+<td>group</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件属组</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件属主</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>文件权限，mode=0644</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>no</td>
+<td>10s</td>
+<td></td>
+<td>请求连接超时时间</td>
+</tr>
+<tr>
+<td>url</td>
+<td>yes</td>
+<td></td>
+<td>(http&#124;https&#124;ftp)://[user[:pass]]@host.domain[:port]/path</td>
+<td>文件网络路径</td>
+</tr>
+</tbody>
+</table>
+<h5 id="get-url示例"><a href="#get-url示例" class="headerlink" title="get_url示例"></a>get_url示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 具体文件时，结合force和bakcup</div><div class="line">ansible  10.1.1.11 -m get_url -a &quot;url=http://10.1.1.1/centos7.2/os/x86_64/Packages/389-ds-base-1.3.4.0-19.el7.x86_64.rpm dest=/tmp/test  backup=yes force=yes&quot;</div><div class="line"></div><div class="line"># 绝对路径时，结合backup</div><div class="line">ansible  10.1.1.11 -m get_url -a &quot;url=http://10.1.1.1/centos7.2/os/x86_64/Packages/389-ds-base-1.3.4.0-19.el7.x86_64.rpm dest=/tmp/  backup=yes&quot;</div><div class="line"></div><div class="line"></div><div class="line"># 校验md5下载文件</div><div class="line">ansible  10.1.1.11 -m get_url -a &quot;url=http://10.1.1.1/centos7.2/os/x86_64/Packages/389-ds-base-1.3.4.0-19.el7.x86_64.rpm dest=/tmp/test  backup=yes force=yes checksum=md5:f81e50379830a369338bd0c9dfd98759&quot;</div></pre></td></tr></table></figure>
+<h4 id="mount模块"><a href="#mount模块" class="headerlink" title="mount模块"></a>mount模块</h4><h5 id="参数详情-1"><a href="#参数详情-1" class="headerlink" title="参数详情"></a>参数详情</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>要挂载的目录，低版本是name选项</td>
+</tr>
+<tr>
+<td>src</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>被挂载的目录</td>
+</tr>
+<tr>
+<td>fstype</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>文件系统类型</td>
+</tr>
+<tr>
+<td>opts</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>挂载选项</td>
+</tr>
+<tr>
+<td>state</td>
+<td>yes</td>
+<td></td>
+<td>present:仅写入配置<br>unmounted：只卸载设备，不清理配置<br>mounted:挂载并写入配置<br>absent:卸载并清理配置</td>
+</tr>
+</tbody>
+</table>
+<h5 id="mount示例"><a href="#mount示例" class="headerlink" title="mount示例"></a>mount示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># 1. 准备环境</div><div class="line">ansible ansible02 -m yum -a &apos;name=nfs-utils state=present&apos;</div><div class="line">ansible ansible02 -m copy -a &apos;content=&quot;/mnt 10.1.1.0/24(rw,sync,no_all_squash)&quot; dest=/etc/exports&apos;</div><div class="line"></div><div class="line"># 2. 挂载</div><div class="line"># 重启挂载，仅将配置写入/etc/fstab</div><div class="line">ansible ansible01 -m mount -a &apos;path=/opt src=10.1.1.12:/mnt fstype=nfs opts=defaults state=present&apos;</div><div class="line"></div><div class="line"># 只卸载，不清理配置</div><div class="line">ansible ansible01 -m mount -a &apos;path=/opt src=10.1.1.12:/mnt fstype=nfs opts=defaults state=unmounted&apos;</div><div class="line"></div><div class="line"># 挂载设备，写入配置文件并挂载</div><div class="line">ansible ansible01 -m mount -a &apos;path=/opt src=10.1.1.12:/mnt fstype=nfs opts=defaults state=mounted&apos;</div><div class="line"></div><div class="line"># 卸载设备，卸载并清理配置</div><div class="line">ansible ansible01 -m mount -a &apos;path=/opt src=10.1.1.12:/mnt fstype=nfs opts=defaults state=absent&apos;</div></pre></td></tr></table></figure>
+<h3 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h3><p>yum 模块用于管理RedHat 系列系统软件包</p>
+<h4 id="参数选项-8"><a href="#参数选项-8" class="headerlink" title="参数选项"></a>参数选项</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>none</td>
+<td></td>
+<td>需要安装软件包的名字可以指定版本</td>
+</tr>
+<tr>
+<td>state</td>
+<td>yes</td>
+<td>present</td>
+<td>present<br>installed<br>latest<br><br>absent<br>removed</td>
+<td>present:确保软件包已经安装<br>installed：确保软件包已经安装<br>latest：安装yum中最新的版本<br><br>absent：卸载对应的软件包<br>remove：卸载对应的软件包</td>
+</tr>
+<tr>
+<td>disable_gpg_check</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>yes:禁用对rpm包的公钥gpg验证,如果repo文件中gpgcheck=0,安装软件包时需要带这个参数<br>no：开启对rpm包的公钥gpg验证</td>
+</tr>
+<tr>
+<td>enablerepo</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>用于指定安装时临时启用的yum源，值为name=</td>
+</tr>
+<tr>
+<td>disablerepo</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>用于指定安装时临时关闭的yum源，值为name=</td>
+</tr>
+</tbody>
+</table>
+<h4 id="yum示例"><a href="#yum示例" class="headerlink" title="yum示例"></a>yum示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 安装nginx</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx&quot;</div><div class="line"></div><div class="line"># 卸载nginx</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx state=absent&quot;</div><div class="line"></div><div class="line"># 更新所有软件包</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=* state=latest&quot;</div><div class="line"></div><div class="line">更多查看ansible-doc yum</div></pre></td></tr></table></figure>
+<h3 id="服务管理-service-amp-systemd"><a href="#服务管理-service-amp-systemd" class="headerlink" title="服务管理(service&amp;systemd)"></a>服务管理(service&amp;systemd)</h3><h4 id="参数选项-9"><a href="#参数选项-9" class="headerlink" title="参数选项"></a>参数选项</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>服务名</td>
+</tr>
+<tr>
+<td>state</td>
+<td>yes</td>
+<td></td>
+<td>started<br>stopped<br>restarted<br>reloaded</td>
+<td>started：开启<br>stopped：停止<br>restarted：重启<br>reloaded：重新加载</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>no</td>
+<td></td>
+<td>yes<br>no</td>
+<td>yes:加入开机自启动<br>no：关闭开机自启动</td>
+</tr>
+</tbody>
+</table>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">## 1. service示例</div><div class="line"></div><div class="line"># 开启nginx服务并加入开机自启动</div><div class="line">ansible 10.1.1.123 -m service -a &quot;name=nginx state=started enabled=yes&quot;</div><div class="line"></div><div class="line">#关闭启nginx服务并踢出开机自启动</div><div class="line">ansible 10.1.1.123 -m service -a &quot;name=nginx state=stoppend enabled=no&quot;</div><div class="line"></div><div class="line">## 2. systemd示例</div><div class="line"></div><div class="line"># 开启nginx服务并加入开机自启动</div><div class="line">ansible 10.1.1.123 -m systemd -a &quot;name=nginx state=started enabled=yes&quot;</div><div class="line"></div><div class="line">#关闭启nginx服务并踢出开机自启动</div><div class="line">ansible 10.1.1.123 -m systemd -a &quot;name=nginx state=stoppend enabled=no&quot;</div></pre></td></tr></table></figure>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>cron模块主要用于添加、删除、更新操作系统的crontab任务计划。</p>
+<h4 id="参数选项-10"><a href="#参数选项-10" class="headerlink" title="参数选项"></a>参数选项</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>yes:修改前备份<br>no:修改前不备份</td>
+</tr>
+<tr>
+<td>cron_file</td>
+<td>no</td>
+<td>no</td>
+<td>文件绝对路径</td>
+<td>替换客户端该用户的任务计划的文件</td>
+</tr>
+<tr>
+<td>minute</td>
+<td>yes</td>
+<td>*</td>
+<td>0-59， * ，*/2</td>
+<td>分</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>yes</td>
+<td>*</td>
+<td>0-23， * ，*/2</td>
+<td>时</td>
+</tr>
+<tr>
+<td>day</td>
+<td>yes</td>
+<td>*</td>
+<td>1-31， * ，*/2</td>
+<td>日</td>
+</tr>
+<tr>
+<td>month</td>
+<td>yes</td>
+<td>*</td>
+<td>1-12， * ，*/2</td>
+<td>月</td>
+</tr>
+<tr>
+<td>weekday</td>
+<td>yes</td>
+<td>*</td>
+<td>0-6或1-7，*</td>
+<td>周</td>
+</tr>
+<tr>
+<td>user</td>
+<td>no</td>
+<td>root</td>
+<td>系统中的用户</td>
+<td>用什么用户添加crontab</td>
+</tr>
+<tr>
+<td>name</td>
+<td>yes</td>
+<td>None</td>
+<td></td>
+<td>计划任务名称，唯一性，不加，多次执行后，会在crontab添加多次，查看crontab -l</td>
+</tr>
+<tr>
+<td>state</td>
+<td>yes</td>
+<td>present</td>
+<td>present<br>absent</td>
+<td>present:新增<br>absent:删除</td>
+</tr>
+<tr>
+<td>job</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>计划任务的命令或者脚本的绝对路径</td>
+</tr>
+<tr>
+<td>env</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>yes:以键值对的形式增加配置crond任务运行的环境变量<br>no:不启用该功能</td>
+</tr>
+<tr>
+<td>insertafter</td>
+<td>no</td>
+<td>none</td>
+<td></td>
+<td>插入在…之前，结合env使用</td>
+</tr>
+<tr>
+<td>insertbefore</td>
+<td>no</td>
+<td>none</td>
+<td></td>
+<td>插入在…之后，结合env使用</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>no</td>
+<td>no</td>
+<td>yes<br>no</td>
+<td>yes:注释这条计划任务<br>no:解开注释</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cron示例"><a href="#cron示例" class="headerlink" title="cron示例"></a>cron示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># 每天5点，2点得时候执行 ls -alh &gt; /dev/null</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=&apos;check dirs&apos; minute=&apos;0&apos; hour=&apos;5,2&apos; job=&apos;ls -alh &gt; /dev/null&apos;&quot;</div><div class="line"></div><div class="line"># 注释掉check dirs计划任务</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=&apos;check dirs&apos; minute=&apos;0&apos; hour=&apos;5,2&apos; job=&apos;ls -alh &gt; /dev/null&apos; disabled=yes&quot;</div><div class="line"></div><div class="line"># 添加name为None的计划任务</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;minute=&apos;0&apos; hour=&apos;5,2&apos; job=&apos;ls -alh &gt; /dev/null&apos;&quot;</div><div class="line"></div><div class="line"># 删除name为None的计划任务</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=None minute=&apos;0&apos; hour=&apos;5,2&apos; job=&apos;ls -alh &gt; /dev/null&apos; state=absent&quot;</div><div class="line"></div><div class="line"># 增加crond任务运行的环境变量</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=PATH env=yes value=/opt/bin&quot;</div><div class="line"></div><div class="line"># 增加crond任务运行的环境变量HOME在PATH之后</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=HOME env=yes value=/root insertbefore=PATH&quot;</div><div class="line"></div><div class="line"># 删除crond任务运行的环境变量</div><div class="line">ansible 10.1.1.122 -m cron -a &quot;name=PATH env=yes state=absent&quot;</div></pre></td></tr></table></figure>
+<h3 id="防火墙管理模块"><a href="#防火墙管理模块" class="headerlink" title="防火墙管理模块"></a>防火墙管理模块</h3><h4 id="selinux"><a href="#selinux" class="headerlink" title="selinux"></a>selinux</h4><h5 id="selinux示例"><a href="#selinux示例" class="headerlink" title="selinux示例"></a>selinux示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ansible ansible01 -m selinux -a &apos;state=disabled&apos;</div></pre></td></tr></table></figure>
+<h4 id="firewalld"><a href="#firewalld" class="headerlink" title="firewalld"></a>firewalld</h4><h5 id="参数选项-11"><a href="#参数选项-11" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>immediate</td>
+<td>yes</td>
+<td>False</td>
+<td></td>
+<td>临时生效</td>
+</tr>
+<tr>
+<td>permanent</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>是否添加永久生效</td>
+</tr>
+<tr>
+<td>state</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td>开启或者关闭</td>
+</tr>
+<tr>
+<td>service</td>
+<td></td>
+<td></td>
+<td></td>
+<td>指定开放或关闭的服务名称</td>
+</tr>
+<tr>
+<td>port</td>
+<td></td>
+<td></td>
+<td></td>
+<td>指定或关闭端口</td>
+</tr>
+<tr>
+<td>masquerade</td>
+<td></td>
+<td></td>
+<td></td>
+<td>开启地址伪装</td>
+</tr>
+<tr>
+<td>zone</td>
+<td></td>
+<td></td>
+<td></td>
+<td>指定配置某个区域</td>
+</tr>
+<tr>
+<td>rich_rule</td>
+<td></td>
+<td></td>
+<td></td>
+<td>配置富规则</td>
+</tr>
+<tr>
+<td>source</td>
+<td></td>
+<td></td>
+<td></td>
+<td>指定来源IP</td>
+</tr>
+</tbody>
+</table>
+<h5 id="firewalld示例"><a href="#firewalld示例" class="headerlink" title="firewalld示例"></a>firewalld示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ansible ansible01 -m firewalled -a &quot;service=http immediate=yes permanent=yes state=enabled&quot;</div><div class="line"></div><div class="line">ansbile ansible01 -m firewalled -a &quot;port=8080-8090/tcp immediate=yes permanent=yes state=enabled&quot;</div></pre></td></tr></table></figure>
+<h3 id="搜集系统信息"><a href="#搜集系统信息" class="headerlink" title="搜集系统信息"></a>搜集系统信息</h3><h4 id="setup模块"><a href="#setup模块" class="headerlink" title="setup模块"></a>setup模块</h4><h5 id="参数选项-12"><a href="#参数选项-12" class="headerlink" title="参数选项"></a>参数选项</h5><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必填项</th>
+<th>默认值</th>
+<th>选项</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filter</td>
+<td>no</td>
+<td>*</td>
+<td></td>
+<td>过滤输出结果</td>
+</tr>
+<tr>
+<td>gather_subset</td>
+<td>no</td>
+<td>all</td>
+<td>all<br>hardware<br>network<br>virtual<br>ohai<br>facter</td>
+<td>设定采集的需求，可在选项前加!取反</td>
+</tr>
+<tr>
+<td>gather_timeout</td>
+<td>no</td>
+<td>10</td>
+<td></td>
+<td>为单个事实收集设置默认超时，以秒为单位</td>
+</tr>
+</tbody>
+</table>
+<h5 id="setup示例"><a href="#setup示例" class="headerlink" title="setup示例"></a>setup示例</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 采集10.1.1.122的系统信息</div><div class="line">ansible 10.1.1.122 -m setup</div><div class="line"></div><div class="line"># 采集10.1.1.122的系统信息后，过滤ansible_memfree_mb</div><div class="line">ansible 10.1.1.122 -m setup -a &quot;filter=ansible_memfree_mb&quot;</div><div class="line"></div><div class="line"># 只收集最少的信息</div><div class="line">ansible 10.1.1.122 -m setup -a &apos;gather_subset=!all&apos;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+    <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    8192bit
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://8192bit.top/2019/09/24/ansible的Ad-Hoc（七）/" title="ansible的Ad-Hoc（七）">https://8192bit.top/2019/09/24/ansible的Ad-Hoc（七）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/Linux系统shell脚本编程（一）/" rel="next" title="Linux系统shell脚本编程（一）">
+                <i class="fa fa-chevron-left"></i> Linux系统shell脚本编程（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/25/ansible与正则（六）/" rel="prev" title="ansible与正则（六）">
+                ansible与正则（六） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.png"
+              alt="8192bit" />
+          
+            <p class="site-author-name" itemprop="name">8192bit</p>
+            <p class="site-description motion-element" itemprop="description">做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kalivid" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:8192bit.top@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.freebuf.com" title="FreeBuf" target="_blank">FreeBuf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kionf.com" title="kionf" target="_blank">kionf</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://8192bit.top/edit" title="Onlie_Markown" target="_blank">Onlie_Markown</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://man.linuxde.net/" title="Linux_cmd" target="_blank">Linux_cmd</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行shell"><span class="nav-number">1.</span> <span class="nav-text">执行shell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#command模块"><span class="nav-number">1.1.</span> <span class="nav-text">command模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#command示例"><span class="nav-number">1.1.2.</span> <span class="nav-text">command示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell模块"><span class="nav-number">1.2.</span> <span class="nav-text">shell模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#shell示例"><span class="nav-number">1.2.2.</span> <span class="nav-text">shell示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#raw模块"><span class="nav-number">1.3.</span> <span class="nav-text">raw模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#raw示例"><span class="nav-number">1.3.2.</span> <span class="nav-text">raw示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#script模块"><span class="nav-number">1.4.</span> <span class="nav-text">script模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#script示例"><span class="nav-number">1.4.2.</span> <span class="nav-text">script示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理"><span class="nav-number">2.</span> <span class="nav-text">用户管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#user模块"><span class="nav-number">2.1.</span> <span class="nav-text">user模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-4"><span class="nav-number">2.1.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#user示例"><span class="nav-number">2.1.2.</span> <span class="nav-text">user示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#group模块"><span class="nav-number">2.2.</span> <span class="nav-text">group模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#group示例"><span class="nav-number">2.2.1.</span> <span class="nav-text">group示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-number">3.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#file模块"><span class="nav-number">3.1.</span> <span class="nav-text">file模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-5"><span class="nav-number">3.1.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#file示例"><span class="nav-number">3.1.2.</span> <span class="nav-text">file示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy模块"><span class="nav-number">3.2.</span> <span class="nav-text">copy模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-6"><span class="nav-number">3.2.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#copy示例"><span class="nav-number">3.2.2.</span> <span class="nav-text">copy示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fetch模块"><span class="nav-number">3.3.</span> <span class="nav-text">fetch模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-7"><span class="nav-number">3.3.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fetch示例"><span class="nav-number">3.3.2.</span> <span class="nav-text">fetch示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-url模块"><span class="nav-number">3.4.</span> <span class="nav-text">get_url模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数详情"><span class="nav-number">3.4.1.</span> <span class="nav-text">参数详情</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#get-url示例"><span class="nav-number">3.4.2.</span> <span class="nav-text">get_url示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mount模块"><span class="nav-number">3.5.</span> <span class="nav-text">mount模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数详情-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">参数详情</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mount示例"><span class="nav-number">3.5.2.</span> <span class="nav-text">mount示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yum"><span class="nav-number">4.</span> <span class="nav-text">yum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数选项-8"><span class="nav-number">4.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yum示例"><span class="nav-number">4.2.</span> <span class="nav-text">yum示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务管理-service-amp-systemd"><span class="nav-number">5.</span> <span class="nav-text">服务管理(service&systemd)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数选项-9"><span class="nav-number">5.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">5.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时任务"><span class="nav-number">6.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数选项-10"><span class="nav-number">6.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cron示例"><span class="nav-number">6.2.</span> <span class="nav-text">cron示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙管理模块"><span class="nav-number">7.</span> <span class="nav-text">防火墙管理模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#selinux"><span class="nav-number">7.1.</span> <span class="nav-text">selinux</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#selinux示例"><span class="nav-number">7.1.1.</span> <span class="nav-text">selinux示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#firewalld"><span class="nav-number">7.2.</span> <span class="nav-text">firewalld</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-11"><span class="nav-number">7.2.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#firewalld示例"><span class="nav-number">7.2.2.</span> <span class="nav-text">firewalld示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜集系统信息"><span class="nav-number">8.</span> <span class="nav-text">搜集系统信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setup模块"><span class="nav-number">8.1.</span> <span class="nav-text">setup模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数选项-12"><span class="nav-number">8.1.1.</span> <span class="nav-text">参数选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#setup示例"><span class="nav-number">8.1.2.</span> <span class="nav-text">setup示例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">8192bit</span>
+
+  
+</div>
+
+
+  <div class="powered-by"> 个人专属</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">  <a class="theme-link" href="https://8192bit.top" rel="external nofollow">博客地址</a></div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      访客
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("D802Ys0yBSWBEFInIqtjIqms-gzGzoHsz", "CYp56oK593eVk0zjAFOzLb8Y");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

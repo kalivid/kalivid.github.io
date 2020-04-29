@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="8192bit,博客" />
+  <meta name="keywords" content="ansible," />
 
 
 
@@ -109,16 +109,18 @@
 
 
 
-<meta name="description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="8192bit">
-<meta property="og:url" content="https://8192bit.top/categories/学习笔记/index.html">
+<meta name="description" content="ansible是指令核心部分，其主要用于执行ad-hoc命令，即单条命令。默认后面需要跟主机和选项部分，默认不指定模块时，使用的是command模块。">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible相关命令及常用选项（四）">
+<meta property="og:url" content="https://8192bit.top/2019/09/27/ansible相关命令及常用选项（四）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
+<meta property="og:description" content="ansible是指令核心部分，其主要用于执行ad-hoc命令，即单条命令。默认后面需要跟主机和选项部分，默认不指定模块时，使用的是command模块。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-29T09:13:13.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8192bit">
-<meta name="twitter:description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
+<meta name="twitter:title" content="ansible相关命令及常用选项（四）">
+<meta name="twitter:description" content="ansible是指令核心部分，其主要用于执行ad-hoc命令，即单条命令。默认后面需要跟主机和选项部分，默认不指定模块时，使用的是command模块。">
 
 
 
@@ -148,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://8192bit.top/categories/学习笔记/"/>
+  <link rel="canonical" href="https://8192bit.top/2019/09/27/ansible相关命令及常用选项（四）/"/>
 
 
 
 
 
-  <title>分类: 学习笔记 | 8192bit</title>
+  <title>ansible相关命令及常用选项（四） | 8192bit</title>
   
 
 
@@ -192,7 +194,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,279 +332,266 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>学习笔记<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/27/ansible相关命令及常用选项（四）/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="8192bit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8192bit">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/30/ansible简介（一）/" itemprop="url">
-              
-                <span itemprop="name">ansible简介（一）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ansible相关命令及常用选项（四）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-30T16:20:18+08:00"
-              content="2019-09-30" >
-          09-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T16:20:18+08:00">
+                2019-09-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/自动化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/27/ansible相关命令及常用选项（四）/" class="leancloud_visitors" data-flag-title="ansible相关命令及常用选项（四）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span> ℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,284 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/29/ansible安装（二）/" itemprop="url">
-              
-                <span itemprop="name">ansible安装（二）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-29T16:20:18+08:00"
-              content="2019-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/28/ansible配置文件详解（三）/" itemprop="url">
-              
-                <span itemprop="name">ansible配置文件详解（三）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-28T16:20:18+08:00"
-              content="2019-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/27/ansible相关命令及常用选项（四）/" itemprop="url">
-              
-                <span itemprop="name">ansible相关命令及常用选项（四）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-27T16:20:18+08:00"
-              content="2019-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/26/ansible的Inventory配置及详解（五）/" itemprop="url">
-              
-                <span itemprop="name">ansible_Inventory配置及详解（五）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-26T16:20:18+08:00"
-              content="2019-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/25/ansible与正则（六）/" itemprop="url">
-              
-                <span itemprop="name">ansible与正则（六）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-25T16:20:18+08:00"
-              content="2019-09-25" >
-          09-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/24/ansible的Ad-Hoc（七）/" itemprop="url">
-              
-                <span itemprop="name">ansible的Ad-Hoc（七）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-24T16:20:18+08:00"
-              content="2019-09-24" >
-          09-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/17/mysql之基本操作及权限/" itemprop="url">
-              
-                <span itemprop="name">mysql之基本操作及权限</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-17T17:11:26+08:00"
-              content="2017-09-17" >
-          09-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/04/markdown/" itemprop="url">
-              
-                <span itemprop="name">markdown初级使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-04T19:17:14+08:00"
-              content="2017-09-04" >
-          09-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <blockquote class="blockquote-center"><p>ansible是指令核心部分，其主要用于执行ad-hoc命令，即单条命令。默认后面需要跟主机和选项部分，默认不指定模块时，使用的是command模块。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a>ansible</h3><p>ansible是指令核心部分，其主要用于执行ad-hoc命令，即单条命令。默认后面需要跟主机和选项部分，默认不指定模块时，使用的是command模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">Usage: ansible &lt;host-pattern&gt; [options]</div><div class="line"></div><div class="line">options:</div><div class="line">-a MODULE_ARGS,--args=MODULE_ARGS    # 模块使用的参数(arguments)</div><div class="line">--ask-vault-pass    # </div><div class="line">-B SECONDS,--background=SECONDS    # 异步运行时多长时间超时</div><div class="line">-C,--check     # 不做任何改变只是检查语法</div><div class="line">-D,--diff    # 当更新的文件数及内容比较少时，该选项可显示这些文件的不同的地方，结合-C用，效果较好。</div><div class="line">-e EXTRA_VARS, --extra-vars=EXTRA_VARS    # 为yaml或者json文件追加键值对例如-e name=hahaha</div><div class="line">-f FORKS,--forks=FORKS    # 并发进程数，默认5</div><div class="line">-i INVENTORY,--inventory-file=INVENTORY    # 指定读取的inverntory文件</div><div class="line">-l SUBSET,--limit=SUBSET    # 进一步将选定主机限制</div><div class="line">--list-hosts    #输出匹配的主机列表，不做其他操作</div><div class="line">-m MODULE_NAME,--module_name=MODULE_NAME    # 模块名,默认command</div><div class="line">-M MODULE_PATH,--module_path=MODULE_PATH    # 模块路径</div><div class="line">--new-vault-password-file=NEW_VAULT_PASSWORD_FILE    #</div><div class="line">-o,--one-line    # 将输出结果压缩成一行</div><div class="line">--output=OUTPUT_FILE    # 加密或解密文件名，用于标准输出</div><div class="line">-P POLL_INTERVAL,--poll=POLL_INTERVAL    # 如果使用-B，则设置轮询间隔</div><div class="line">--syntax-check    #对playbook进行语法检查，且不执行playbook。</div><div class="line">-t TREE,-tree=TREE    # 日志输出保存在这个目录，文件名为执行主机名</div><div class="line">--vault-password-file=VAULT_PASSWORD_FILE    #vault密码文件</div><div class="line">-v,--verbose    # 输出执行的详细信息,使用-vvv或-vvvv获取更多</div><div class="line">--version    # 查看版本信息</div><div class="line"></div><div class="line"># Connection Options（连接）:</div><div class="line">-k,--ask-pass    # 要求用户输入请求连接密码</div><div class="line">--private-key=PRIVATE_KEY_FILE, --key-file=PRIVATE_KEY_FILE        #私钥路径，使用这个文件来验证连接</div><div class="line">-u REMOTE_USER, --user=REMOTE_USER    # 远程用户</div><div class="line">-c CONNECTION, --connection=CONNECTION    # 连接类型，默认smart</div><div class="line">-T TIMEOUT, --timeout=TIMEOUT    # 指定超时时间，默认10秒</div><div class="line">--ssh-common-args=SSH_COMMON_ARGS    # 指定要传递给sftp / scp / ssh的常见参数 （例如 ProxyCommand）</div><div class="line">--sftp-extra-args=SFTP_EXTRA_ARGS    # 指定要传递给sftp，例如-f -l</div><div class="line">--scp-extra-args=SCP_EXTRA_ARGS        # 指定要传递给scp，例如-l</div><div class="line">--ssh-extra-args=SSH_EXTRA_ARGS        # 指定要传递给ssh，例如-R</div><div class="line"></div><div class="line"># Privilege Escalation Options(提权):</div><div class="line">-s, --sudo    # 使用sudo (nopasswd)运行操作 ， 不推荐使用</div><div class="line">-U SUDO_USER, --sudo-user=SUDO_USER    #sudo用户，默认为root</div><div class="line">-S, --su    # 使用su运行操作， 不推荐使用</div><div class="line">-R SU_USER, --su-user=SU_USER    # su 用户，默认为root，不推荐使用</div><div class="line">-b,--become    # 运行操作</div><div class="line">--become-method=BECOME_METHOD    #权限升级方法使用 ，默认为sudo，有效选择：sudo,su,pbrun,pfexec,runas,doas,dzdo</div><div class="line">--become-user=BECOME_USER    # 使用哪个用户运行，默认为root</div><div class="line">--ask-sudo-pass    # sudo密码，不推荐使用</div><div class="line">--ask-su-pass    # su密码，不推荐使用</div><div class="line">-K, --ask-become-pass    # 权限提升密码</div></pre></td></tr></table></figure>
+<h3 id="ansible-playbook"><a href="#ansible-playbook" class="headerlink" title="ansible-playbook"></a>ansible-playbook</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Usage: ansible-playbook playbook.yml</div><div class="line"></div><div class="line">Options:</div><div class="line">--flush-cache    # 清除fact缓存</div><div class="line">--force-handlers    # 强制运行handlers的任务，即使任务失败</div><div class="line">--list-tags    # 列出所有可用的tags</div><div class="line">--list-tasks    # 列出将要执行的所有任务</div><div class="line">--skip-tags=SKIP_TAGS    # 跳过指定的tags任务</div><div class="line">--start-at-task=START_AT_TASK    # 从第几个任务开始</div><div class="line">--step    # 逐步执行playbook定义的任务，并经人工确认后继续执行下一步任务</div><div class="line">--syntax-check    # 检查playbook语法书写</div><div class="line">-t TAGS, --tags=TAGS    # 指定执行该tas的任务</div><div class="line"></div><div class="line"># 其他参数与ansible参数一样</div></pre></td></tr></table></figure>
+<h3 id="ansible-galaxy"><a href="#ansible-galaxy" class="headerlink" title="ansible-galaxy"></a>ansible-galaxy</h3><p><code>ansible-galaxy</code> 指令用于方便的从 <a href="https://link.jianshu.com/?t=https://galaxy.ansible.com/" target="_blank" rel="external">https://galaxy.ansible.com/</a> 站点下载第三方扩展模块，我们可以形象的理解其类似于centos下的yum、python下的pip或easy_install，在ansible-galaxy，我们可以上传下载Roles</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Usage: ansible-galaxy [delete|import|info|init|install|list|login|remove|search|setup] [--help] [options] ...</div><div class="line"></div><div class="line">info:    #列出指定Role的详细信息</div><div class="line">install:    # 下载并安装galaxy指定的Roles到本地</div><div class="line">list:    # 列出本地已下载的Roles</div><div class="line">remove:    # 删除本地已下载的Roles</div><div class="line"></div><div class="line">Options:</div><div class="line">-v, --verbose    # 输出执行的详细信息,使用-vvv或-vvvv获取更多</div><div class="line"></div><div class="line"># 用法例子</div><div class="line">ansible-galaxy info --help    # 查看info的帮助信息</div><div class="line">ansible-galaxy --ignore-errors install azavea.git    # 下载Nginx这个Role到本地并忽略报错（默认存放/etc/ansible/roles/）</div></pre></td></tr></table></figure>
+<h3 id="ansible-pull"><a href="#ansible-pull" class="headerlink" title="ansible-pull"></a>ansible-pull</h3><p>pull模式在被配置的机器上运行，速度很快。在这种模式下，你需要提供一个git仓库来供Ansible下载来配置你的机器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Usage: ansible-pull -U &lt;repository&gt; [options]</div></pre></td></tr></table></figure>
+<h3 id="ansible-doc"><a href="#ansible-doc" class="headerlink" title="ansible-doc"></a>ansible-doc</h3><p>该指令用于查看模块信息，常用参数有两个<code>-l</code>和 <code>-s</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-l, --list    # 列出可用的模块</div><div class="line">-s, --snippet    # 显示playbook制定模块的用法</div></pre></td></tr></table></figure></p>
+<h3 id="ansible-vault"><a href="#ansible-vault" class="headerlink" title="ansible-vault"></a>ansible-vault</h3><p>ansible-vault主要应用于配置文件中含有敏感信息，又不希望他能被人看到，vault可以帮你加密/解密这个配置文件。这种playbook文件在执行时，需要加上 –ask-vault-pass参数，同样需要输入密码后才能正常执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Usage: ansible-vault [create|decrypt|edit|encrypt|rekey|view] [--help] [options] vaultfile.yml</div><div class="line"></div><div class="line"># 示例</div><div class="line">ansible-vault create /tmp/1.yml    # 创建加密文件</div><div class="line">ansible-vault view /tmp/1.yml    # 查看加密文件，类似cat</div><div class="line">ansible-vault encrypt /tmp/2.yml    # 加密文件</div><div class="line">ansible-vault decrypt /tmp/2.yml    # 解密文件</div><div class="line"></div><div class="line"># ansible-playbook 执行加密文件</div><div class="line">ansible-playbook all /tmp/1.yml –ask-vault-pass</div></pre></td></tr></table></figure>
+<h3 id="ansible-console"><a href="#ansible-console" class="headerlink" title="ansible-console"></a>ansible-console</h3><p>交互式命令执行界面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">参数与ansible一致</div></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
+    <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+    </div>
+    
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    8192bit
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://8192bit.top/2019/09/27/ansible相关命令及常用选项（四）/" title="ansible相关命令及常用选项（四）">https://8192bit.top/2019/09/27/ansible相关命令及常用选项（四）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/26/ansible的Inventory配置及详解（五）/" rel="next" title="ansible_Inventory配置及详解（五）">
+                <i class="fa fa-chevron-left"></i> ansible_Inventory配置及详解（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/28/ansible配置文件详解（三）/" rel="prev" title="ansible配置文件详解（三）">
+                ansible配置文件详解（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -610,6 +599,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
 
         </div>
         
@@ -630,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -736,6 +740,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible"><span class="nav-number">1.</span> <span class="nav-text">ansible</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-playbook"><span class="nav-number">2.</span> <span class="nav-text">ansible-playbook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-galaxy"><span class="nav-number">3.</span> <span class="nav-text">ansible-galaxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-pull"><span class="nav-number">4.</span> <span class="nav-text">ansible-pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-doc"><span class="nav-number">5.</span> <span class="nav-text">ansible-doc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-vault"><span class="nav-number">6.</span> <span class="nav-text">ansible-vault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ansible-console"><span class="nav-number">7.</span> <span class="nav-text">ansible-console</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -888,6 +908,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 

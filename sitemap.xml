@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://8192bit.top/2019/09/29/ansible%E5%AE%89%E8%A3%85/</loc>
+    <loc>https://8192bit.top/2019/09/24/ansible%E7%9A%84Ad-Hoc%EF%BC%88%E4%B8%83%EF%BC%89/</loc>
     
-    <lastmod>2020-04-29T08:45:57.539Z</lastmod>
+    <lastmod>2020-04-29T09:20:33.627Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://8192bit.top/2019/09/30/ansible%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://8192bit.top/2019/09/25/ansible%E4%B8%8E%E6%AD%A3%E5%88%99%EF%BC%88%E5%85%AD%EF%BC%89/</loc>
     
-    <lastmod>2020-04-29T08:45:52.313Z</lastmod>
+    <lastmod>2020-04-29T09:17:48.512Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/26/ansible%E7%9A%84Inventory%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BA%94%EF%BC%89/</loc>
+    
+    <lastmod>2020-04-29T09:15:42.016Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/27/ansible%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9%EF%BC%88%E5%9B%9B%EF%BC%89/</loc>
+    
+    <lastmod>2020-04-29T09:13:13.209Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/28/ansible%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%89%EF%BC%89/</loc>
+    
+    <lastmod>2020-04-29T09:11:15.025Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/29/ansible%E5%AE%89%E8%A3%85%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    
+    <lastmod>2020-04-29T09:10:55.917Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/30/ansible%E7%AE%80%E4%BB%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    
+    <lastmod>2020-04-29T09:10:37.048Z</lastmod>
     
   </url>
   

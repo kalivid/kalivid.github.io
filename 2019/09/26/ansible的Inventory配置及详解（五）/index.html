@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="8192bit,博客" />
+  <meta name="keywords" content="ansible," />
 
 
 
@@ -109,16 +109,18 @@
 
 
 
-<meta name="description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="8192bit">
-<meta property="og:url" content="https://8192bit.top/categories/学习笔记/index.html">
+<meta name="description" content="Inventory是ansible管理主机信息的配置文件，相当于系统/etc/hosts文件的功能。使用时通过-i或–inventory-file指定读取，默认读取/etc/ansible/hosts，也支持动态生成。">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible_Inventory配置及详解（五）">
+<meta property="og:url" content="https://8192bit.top/2019/09/26/ansible的Inventory配置及详解（五）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
+<meta property="og:description" content="Inventory是ansible管理主机信息的配置文件，相当于系统/etc/hosts文件的功能。使用时通过-i或–inventory-file指定读取，默认读取/etc/ansible/hosts，也支持动态生成。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-29T09:15:42.016Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8192bit">
-<meta name="twitter:description" content="做任何事儿，不要只是感动到自己！尽最大努力，去完善自己的选择！">
+<meta name="twitter:title" content="ansible_Inventory配置及详解（五）">
+<meta name="twitter:description" content="Inventory是ansible管理主机信息的配置文件，相当于系统/etc/hosts文件的功能。使用时通过-i或–inventory-file指定读取，默认读取/etc/ansible/hosts，也支持动态生成。">
 
 
 
@@ -148,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://8192bit.top/categories/学习笔记/"/>
+  <link rel="canonical" href="https://8192bit.top/2019/09/26/ansible的Inventory配置及详解（五）/"/>
 
 
 
 
 
-  <title>分类: 学习笔记 | 8192bit</title>
+  <title>ansible_Inventory配置及详解（五） | 8192bit</title>
   
 
 
@@ -192,7 +194,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -330,279 +332,336 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>学习笔记<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/26/ansible的Inventory配置及详解（五）/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="8192bit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="8192bit">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/30/ansible简介（一）/" itemprop="url">
-              
-                <span itemprop="name">ansible简介（一）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ansible_Inventory配置及详解（五）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-30T16:20:18+08:00"
-              content="2019-09-30" >
-          09-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T16:20:18+08:00">
+                2019-09-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/自动化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/26/ansible的Inventory配置及详解（五）/" class="leancloud_visitors" data-flag-title="ansible_Inventory配置及详解（五）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span> ℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  594 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/29/ansible安装（二）/" itemprop="url">
-              
-                <span itemprop="name">ansible安装（二）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-29T16:20:18+08:00"
-              content="2019-09-29" >
-          09-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/28/ansible配置文件详解（三）/" itemprop="url">
-              
-                <span itemprop="name">ansible配置文件详解（三）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-28T16:20:18+08:00"
-              content="2019-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/27/ansible相关命令及常用选项（四）/" itemprop="url">
-              
-                <span itemprop="name">ansible相关命令及常用选项（四）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-27T16:20:18+08:00"
-              content="2019-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/26/ansible的Inventory配置及详解（五）/" itemprop="url">
-              
-                <span itemprop="name">ansible_Inventory配置及详解（五）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-26T16:20:18+08:00"
-              content="2019-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/25/ansible与正则（六）/" itemprop="url">
-              
-                <span itemprop="name">ansible与正则（六）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-25T16:20:18+08:00"
-              content="2019-09-25" >
-          09-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/24/ansible的Ad-Hoc（七）/" itemprop="url">
-              
-                <span itemprop="name">ansible的Ad-Hoc（七）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-24T16:20:18+08:00"
-              content="2019-09-24" >
-          09-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/17/mysql之基本操作及权限/" itemprop="url">
-              
-                <span itemprop="name">mysql之基本操作及权限</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-17T17:11:26+08:00"
-              content="2017-09-17" >
-          09-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/04/markdown/" itemprop="url">
-              
-                <span itemprop="name">markdown初级使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-04T19:17:14+08:00"
-              content="2017-09-04" >
-          09-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+        <blockquote class="blockquote-center"><p>Inventory是ansible管理主机信息的配置文件，相当于系统/etc/hosts文件的功能。使用时通过-i或–inventory-file指定读取，默认读取/etc/ansible/hosts，也支持动态生成。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Inventory是ansible管理主机信息的配置文件，相当于系统/etc/hosts文件的功能。使用时通过-i或–inventory-file指定读取，默认读取/etc/ansible/hosts，也支持动态生成。</p>
+<h3 id="定义主机和组"><a href="#定义主机和组" class="headerlink" title="定义主机和组"></a>定义主机和组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[test1]    # 组名</div><div class="line">10.1.1.123:22    # 定义远程端口</div><div class="line">server02 ansible_ssh_host=10.1.1.122 # 设置别名</div><div class="line"></div><div class="line">[test2]</div><div class="line">10.1.1.124</div><div class="line"></div><div class="line">[test3]</div><div class="line">10.1.1.122 ansible_connection=local    # 定义主机参数</div><div class="line"></div><div class="line">[test4]</div><div class="line">10.1.1.123</div><div class="line">[test4:vars]    # 定义组参数</div><div class="line">ansible_ssh_user=root</div><div class="line">ansible_ssh_pass=123qwe</div><div class="line"></div><div class="line">[server:children]    # 组嵌套</div><div class="line">test1</div><div class="line">test2</div><div class="line"></div><div class="line">[test_server]</div><div class="line">ansible_test[1:2]</div></pre></td></tr></table></figure>
+<h3 id="参数项"><a href="#参数项" class="headerlink" title="参数项"></a>参数项</h3><p>主机连接：<br>| 参数  |  说明 |<br>| ———— | ———— |<br>| ansible_connection  | 与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible 1.2 以前默认使用 paramiko.1.2 以后默认使用 ‘smart’,’smart’ 方式会根据是否支持 ControlPersist, 来判断’ssh’ 方式是否可行.  |</p>
+<p>ssh连接参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansible_ssh_host</td>
+<td>将要连接的远程主机名.与你想要设定的主机的别名不同的话,可通过此变量设置.</td>
+</tr>
+<tr>
+<td>ansible_ssh_port</td>
+<td>ssh端口号.如果不是默认的端口号,通过此变量设置.</td>
+</tr>
+<tr>
+<td>ansible_ssh_user</td>
+<td>指定默认ssh的用户名</td>
+</tr>
+<tr>
+<td>ansible_ssh_pass</td>
+<td>ssh 密码(这种方式并不安全,我们强烈建议使用 –ask-pass 或 SSH 密钥) ansible服务端需要安装sshpass</td>
+</tr>
+<tr>
+<td>ansible_ssh_private_key_file</td>
+<td>ssh 使用的私钥文件.适用于有多个密钥,而你不想使用 SSH 代理的情况.</td>
+</tr>
+<tr>
+<td>ansible_ssh_common_args</td>
+<td>此设置附加到sftp，scp和ssh的缺省命令行</td>
+</tr>
+<tr>
+<td>ansible_sftp_extra_args</td>
+<td>此设置附加到默认sftp命令行。</td>
+</tr>
+<tr>
+<td>ansible_scp_extra_args</td>
+<td>此设置附加到默认scp命令行。</td>
+</tr>
+<tr>
+<td>ansible_ssh_extra_args</td>
+<td>此设置附加到默认ssh命令行。</td>
+</tr>
+<tr>
+<td>ansible_ssh_pipelining</td>
+<td>确定是否使用SSH管道。 这可以覆盖ansible.cfg中得设置</td>
+</tr>
+</tbody>
+</table>
+<p>远程主机环境参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansible_shell_type</td>
+<td>目标系统的shell类型.默认情况下,命令的执行使用 ‘sh’ 语法,可设置为 ‘csh’ 或 ‘fish’.</td>
+</tr>
+<tr>
+<td>ansible_python_interpreter</td>
+<td>目标主机的 python 路径.适用于的情况: 系统中有多个 Python, 或者命令路径不是”/usr/bin/python”,比如 *BSD, 或者 /usr/bin/python</td>
+</tr>
+<tr>
+<td>ansible_*_interpreter</td>
+<td>这里的”*”可以是ruby 或perl 或其他语言的解释器，作用和ansible_python_interpreter 类似</td>
+</tr>
+<tr>
+<td>ansible_shell_executable</td>
+<td>这将设置ansible控制器将在目标机器上使用的shell，覆盖ansible.cfg中的配置，默认为/bin/sh。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="动态生成Inventory"><a href="#动态生成Inventory" class="headerlink" title="动态生成Inventory"></a>动态生成Inventory</h3>
       
     </div>
+    
+    
+    
+    <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+    </div>
+    
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    8192bit
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://8192bit.top/2019/09/26/ansible的Inventory配置及详解（五）/" title="ansible_Inventory配置及详解（五）">https://8192bit.top/2019/09/26/ansible的Inventory配置及详解（五）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/25/ansible与正则（六）/" rel="next" title="ansible与正则（六）">
+                <i class="fa fa-chevron-left"></i> ansible与正则（六）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/27/ansible相关命令及常用选项（四）/" rel="prev" title="ansible相关命令及常用选项（四）">
+                ansible相关命令及常用选项（四） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -610,6 +669,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="vcomments"></div>
+    
+  </div>
+
 
         </div>
         
@@ -630,8 +695,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -736,6 +810,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义主机和组"><span class="nav-number">2.</span> <span class="nav-text">定义主机和组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数项"><span class="nav-number">3.</span> <span class="nav-text">参数项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态生成Inventory"><span class="nav-number">4.</span> <span class="nav-text">动态生成Inventory</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -888,6 +978,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 
