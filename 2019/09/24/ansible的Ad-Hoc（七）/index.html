@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="8192bit">
 <meta property="og:description" content="ansible命令行常用选项及参数详解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T09:20:33.627Z">
+<meta property="og:updated_time" content="2020-05-06T01:23:32.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible的Ad-Hoc（七）">
 <meta name="twitter:description" content="ansible命令行常用选项及参数详解。">
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,754 字
+                  4,767 字
                 </span>
               
 
@@ -1247,7 +1247,7 @@
 <td>yes</td>
 <td>present</td>
 <td>present<br>installed<br>latest<br><br>absent<br>removed</td>
-<td>present:确保软件包已经安装<br>installed：确保软件包已经安装<br>latest：安装yum中最新的版本<br><br>absent：卸载对应的软件包<br>remove：卸载对应的软件包</td>
+<td>present(new):确保软件包已经安装<br>installed(old)：确保软件包已经安装<br>latest：安装yum中最新的版本<br><br>absent(new)：卸载对应的软件包<br>removed(old)：卸载对应的软件包</td>
 </tr>
 <tr>
 <td>disable_gpg_check</td>
@@ -1272,7 +1272,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="yum示例"><a href="#yum示例" class="headerlink" title="yum示例"></a>yum示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 安装nginx</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx&quot;</div><div class="line"></div><div class="line"># 卸载nginx</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx state=absent&quot;</div><div class="line"></div><div class="line"># 更新所有软件包</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=* state=latest&quot;</div><div class="line"></div><div class="line">更多查看ansible-doc yum</div></pre></td></tr></table></figure>
+<h4 id="yum示例"><a href="#yum示例" class="headerlink" title="yum示例"></a>yum示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 安装nginx</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx&quot;</div><div class="line"></div><div class="line"># 卸载nginx(建议使用最新present和absent)</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=nginx state=absent&quot;</div><div class="line"></div><div class="line"># 更新所有软件包</div><div class="line">ansible 10.1.1.123 -m yum -a &quot;name=* state=latest&quot;</div><div class="line"></div><div class="line">更多查看ansible-doc yum</div></pre></td></tr></table></figure>
 <h3 id="服务管理-service-amp-systemd"><a href="#服务管理-service-amp-systemd" class="headerlink" title="服务管理(service&amp;systemd)"></a>服务管理(service&amp;systemd)</h3><h4 id="参数选项-9"><a href="#参数选项-9" class="headerlink" title="参数选项"></a>参数选项</h4><table>
 <thead>
 <tr>
