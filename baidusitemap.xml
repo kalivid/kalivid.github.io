@@ -4,6 +4,75 @@
 
     
   <url>
+    <loc>https://8192bit.top/2019/09/21/ansible-playbook%E4%B9%8B%E5%8F%98%E9%87%8F%EF%BC%88%E5%8D%81%EF%BC%89/</loc>
+    <lastmod>2020-05-07T01:45:46.382Z</lastmod>
+    <data>
+        <display>
+        <title>ansible-playbook之变量（十）</title>
+        <pubTime>2019-09-21T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/22/ansible-playbook%E4%B9%8B%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAplaybook%EF%BC%88%E4%B9%9D%EF%BC%89/</loc>
+    <lastmod>2020-05-07T01:45:21.216Z</lastmod>
+    <data>
+        <display>
+        <title>ansible-playbook之我的第一个playbook（九）</title>
+        <pubTime>2019-09-22T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/23/ansbile-playbook%E4%B9%8Byaml%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%88%E5%85%AB%EF%BC%89/</loc>
+    <lastmod>2020-05-07T01:39:45.860Z</lastmod>
+    <data>
+        <display>
+        <title>ansbile-playbook之yaml语法规则（八）</title>
+        <pubTime>2019-09-23T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://8192bit.top/2019/09/24/ansible%E7%9A%84Ad-Hoc%EF%BC%88%E4%B8%83%EF%BC%89/</loc>
     <lastmod>2020-05-06T02:22:37.734Z</lastmod>
     <data>

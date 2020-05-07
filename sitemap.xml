@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://8192bit.top/2019/09/21/ansible-playbook%E4%B9%8B%E5%8F%98%E9%87%8F%EF%BC%88%E5%8D%81%EF%BC%89/</loc>
+    
+    <lastmod>2020-05-07T01:45:46.382Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/22/ansible-playbook%E4%B9%8B%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAplaybook%EF%BC%88%E4%B9%9D%EF%BC%89/</loc>
+    
+    <lastmod>2020-05-07T01:45:21.216Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/23/ansbile-playbook%E4%B9%8Byaml%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%88%E5%85%AB%EF%BC%89/</loc>
+    
+    <lastmod>2020-05-07T01:39:45.860Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://8192bit.top/2019/09/24/ansible%E7%9A%84Ad-Hoc%EF%BC%88%E4%B8%83%EF%BC%89/</loc>
     
     <lastmod>2020-05-06T02:22:37.734Z</lastmod>

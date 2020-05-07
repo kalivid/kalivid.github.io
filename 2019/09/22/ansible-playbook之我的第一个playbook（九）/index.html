@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="Ansible的配置文件详解">
+<meta name="description" content="playbook是由一个或多个”play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ansible配置文件详解（三）">
-<meta property="og:url" content="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/index.html">
+<meta property="og:title" content="ansible-playbook之我的第一个playbook（九）">
+<meta property="og:url" content="https://8192bit.top/2019/09/22/ansible-playbook之我的第一个playbook（九）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="Ansible的配置文件详解">
+<meta property="og:description" content="playbook是由一个或多个”play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T09:11:15.025Z">
+<meta property="og:updated_time" content="2020-05-07T01:45:21.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ansible配置文件详解（三）">
-<meta name="twitter:description" content="Ansible的配置文件详解">
+<meta name="twitter:title" content="ansible-playbook之我的第一个playbook（九）">
+<meta name="twitter:description" content="playbook是由一个或多个”play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。">
 
 
 
@@ -150,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/"/>
+  <link rel="canonical" href="https://8192bit.top/2019/09/22/ansible-playbook之我的第一个playbook（九）/"/>
 
 
 
 
 
-  <title>ansible配置文件详解（三） | 8192bit</title>
+  <title>ansible-playbook之我的第一个playbook（九） | 8192bit</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/22/ansible-playbook之我的第一个playbook（九）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="8192bit">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ansible配置文件详解（三）</h1>
+          <h1 class="post-title" itemprop="name headline">ansible-playbook之我的第一个playbook（九）</h1>
         
 
         <div class="post-meta">
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T16:20:18+08:00">
-                2019-09-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T16:20:18+08:00">
+                2019-09-22
               </time>
             
 
@@ -426,7 +426,7 @@
 
           
           
-             <span id="/2019/09/28/ansible配置文件详解（三）/" class="leancloud_visitors" data-flag-title="ansible配置文件详解（三）">
+             <span id="/2019/09/22/ansible-playbook之我的第一个playbook（九）/" class="leancloud_visitors" data-flag-title="ansible-playbook之我的第一个playbook（九）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  399 字
+                  1,005 字
                 </span>
               
 
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -489,12 +489,39 @@
       
 
       
-        <blockquote class="blockquote-center"><p>Ansible的配置文件详解</p>
+        <blockquote class="blockquote-center"><p>playbook是由一个或多个”play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="常用配置文件详解"><a href="#常用配置文件详解" class="headerlink" title="常用配置文件详解"></a>常用配置文件详解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"># 目录地址:  /etc/ansible/ansible.cfg</div><div class="line"></div><div class="line">[defaults]</div><div class="line">#inventory      = /etc/ansible/hosts            # 定义Inventory</div><div class="line">#library        = /usr/share/my_modules/        # 自定义lib库存放目录</div><div class="line">#remote_tmp     = ~/.ansible/tmp                # 临时文件远程主机存放目录</div><div class="line">#local_tmp      = ~/.ansible/tmp                # 临时文件本地存放目录</div><div class="line">#forks          = 5                                # 默认开启的并发数，通过-f选项指定</div><div class="line">#poll_interval  = 15                            # 默认轮询时间剑客</div><div class="line">#sudo_user      = root                            # 默认sudo用户</div><div class="line">#ask_sudo_pass = True                            # 是否需要sudo密码</div><div class="line">#ask_pass      = True                            # 是否需要密码</div><div class="line">#transport      = smart                            # </div><div class="line">#remote_port    = 22</div><div class="line">#module_lang    = C</div><div class="line">#module_set_locale = False</div><div class="line">#roles_path    = /etc/ansible/roles                # 默认下载的roles存放目录</div><div class="line">#host_key_checking = False                        # 首次连接是否需要检查key认证，建议设为false</div><div class="line">#timeout = 10                                    # 默认超时时间</div><div class="line">#log_path = /var/log/ansible.log                # 执行日志存放目录</div><div class="line">#module_name = command                            # 默认执行的模块</div><div class="line">#fact_caching = memory                            # getfact缓存的主机信息存放方式</div><div class="line">#retry_files_enabled = False</div><div class="line">#retry_files_save_path = ~/.ansible-retry                # 错误重启文件存放目录</div><div class="line"></div><div class="line">[privilege_escalation]    # 安全</div><div class="line">#become=True                    # 是否sudo</div><div class="line">#become_method=sudo                # sudo方式</div><div class="line">#become_user=root                # sudo后变为root用户</div><div class="line">#become_ask_pass=False            # sudo后是否验证密码</div><div class="line"></div><div class="line">[paramiko_connection]</div><div class="line">#record_host_keys=False            # 不记录新主机的key以提升效率</div><div class="line">#pty=False                        # 禁用sudo功能</div><div class="line"></div><div class="line">[ssh_connection]</div><div class="line">#pipelining = False                # 管道加速功能，需配合requiretty使用方可生效</div><div class="line"></div><div class="line">[accelerate]        # ansible连接加速配置</div><div class="line">#accelerate_port = 5099            # 加速连接端口</div><div class="line">#accelerate_timeout = 30        # 命令行执行超时时间(秒)</div><div class="line">#accelerate_connect_timeout = 5.0    # 连接超时时间（秒）</div><div class="line">#accelerate_daemon_timeout = 30        # 上一个活动连接时间(分)</div><div class="line">#accelerate_multi_key = yes</div><div class="line"></div><div class="line"></div><div class="line">[selinux]</div><div class="line">#libvirt_lxc_noseclabel = yes</div><div class="line"></div><div class="line">[colors]</div><div class="line">#highlight = white</div><div class="line">#verbose = blue</div><div class="line">#warn = bright purple            #明亮紫</div><div class="line">#error = red</div><div class="line">#debug = dark gray                #暗灰色</div><div class="line">#deprecate = purple</div><div class="line">#skip = cyan                    #蓝绿</div><div class="line">#unreachable = red</div><div class="line">#ok = green</div><div class="line">#changed = yellow</div><div class="line">#diff_add = green</div><div class="line">#diff_remove = red</div><div class="line">#diff_lines = cyan</div></pre></td></tr></table></figure>
-<h3 id="常用设置"><a href="#常用设置" class="headerlink" title="常用设置"></a>常用设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[defaults]</div><div class="line">host_key_checking = False</div></pre></td></tr></table></figure>
-
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>playbook是由一个或多个”play”组成的列表。play的主要功能在于将事先归并为一组的主机装扮成事先通过ansible中的task定义好的角色。从根本上来讲所谓task无非是调用ansible的一个module。将多个play组织在一个playbook中即可以让它们联同起来按事先编排的机制同唱一台大戏。</p>
+<p>play 及 对应的 shell、unarchive、service、yum等模块。<br>playbook的核心就是tasks下的。</p>
+<p>其主要有以下四部分构成:</p>
+<ul>
+<li>Target section： 定义将要执行 playbook 的远程主机组</li>
+<li>Variable section： 定义 playbook 运行时需要使用的变量</li>
+<li>Task section： 定义将要在远程主机上执行的任务列表</li>
+<li>Handler section： 定义 task 执行完成以后需要调用的任务</li>
+</ul>
+<h3 id="第一个playbook"><a href="#第一个playbook" class="headerlink" title="第一个playbook"></a>第一个playbook</h3><h4 id="1-定义主机清单"><a href="#1-定义主机清单" class="headerlink" title="1.定义主机清单"></a>1.定义主机清单</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[test1]</div><div class="line">10.1.1.123:22</div></pre></td></tr></table></figure>
+<h4 id="2-明确playbook任务"><a href="#2-明确playbook任务" class="headerlink" title="2.明确playbook任务"></a>2.明确playbook任务</h4><ol>
+<li>安装最新版httpd</li>
+<li>启动并加入开机自启动</li>
+<li>自定义默认端口号为8080，重启httpd</li>
+</ol>
+<h4 id="3-书写playbook"><a href="#3-书写playbook" class="headerlink" title="3. 书写playbook"></a>3. 书写playbook</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: 10.1.1.123</div><div class="line">  vars:</div><div class="line">    http_port: 8080</div><div class="line">  remote_user: root</div><div class="line">  tasks:</div><div class="line">  - name: 安装最新版本的apache</div><div class="line">    yum: name=httpd state=latest</div><div class="line">  - name: 写入apache配置文件</div><div class="line">    tags: reset port</div><div class="line">    template: src=/etc/ansible/http.conf.j2 dest=/etc/httpd/conf/httpd.conf backup=yes</div><div class="line">    notify: # dest（目标）文件发生改变，执行handlers</div><div class="line">      - restart_apache</div><div class="line">  - name: 启动apache并加入开机自启动</div><div class="line">    service: name=httpd state=started enabled=yes</div><div class="line">  handlers:</div><div class="line">    - name: restart_apache</div><div class="line">      service: name=httpd state=restarted</div></pre></td></tr></table></figure>
+<p><strong>转换成python</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">[&#123;&apos;hosts&apos;: &apos;10.1.1.123&apos;, &apos;vars&apos;: &#123;&apos;http_port&apos;: 8080&#125;, &apos;remote_user&apos;: &apos;root&apos;, &apos;tasks&apos;: [&#123;&apos;name&apos;: &apos;安装最新版本的apache&apos;, &apos;yum&apos;: &apos;name=httpd state=latest&apos;&#125;, &#123;&apos;name&apos;: &apos;写入apache配置文件&apos;, &apos;tags&apos;: &apos;reset port&apos;, &apos;template&apos;: &apos;src=/etc/ansible/http.conf.j2 dest=/etc/httpd/conf/httpd.conf backup=yes&apos;, &apos;notify&apos;: [&apos;restart_apache&apos;]&#125;, &#123;&apos;name&apos;: &apos;启动apache并加入开机自启动&apos;, &apos;service&apos;: &apos;name=httpd state=started enabled=yes&apos;&#125;], &apos;handlers&apos;: [&#123;&apos;name&apos;: &apos;restart_apache&apos;, &apos;service&apos;: &apos;name=httpd state=restarted&apos;&#125;]&#125;]</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 格式化后</div><div class="line">[&#123;</div><div class="line">    &apos;hosts&apos;: &apos;10.1.1.123&apos;,</div><div class="line">    &apos;vars&apos;: &#123;</div><div class="line">        &apos;http_port&apos;: 8080</div><div class="line">    &#125;,</div><div class="line">    &apos;remote_user&apos;: &apos;root&apos;,</div><div class="line">    &apos;tasks&apos;: [&#123;</div><div class="line">        &apos;name&apos;: &apos;安装最新版本的apache&apos;,</div><div class="line">        &apos;yum&apos;: &apos;name=httpd state=latest&apos;</div><div class="line">    &#125;, &#123;</div><div class="line">        &apos;name&apos;: &apos;写入apache配置文件&apos;,</div><div class="line">        &apos;tags&apos;: &apos;reset port&apos;,</div><div class="line">        &apos;template&apos;: &apos;src=/etc/ansible/http.conf.j2 dest=/etc/httpd/conf/httpd.conf backup=yes&apos;,</div><div class="line">        &apos;notify&apos;: [&apos;restart_apache&apos;]</div><div class="line">    &#125;, &#123;</div><div class="line">        &apos;name&apos;: &apos;启动apache并加入开机自启动&apos;,</div><div class="line">        &apos;service&apos;: &apos;name=httpd state=started enabled=yes&apos;</div><div class="line">    &#125;],</div><div class="line">    &apos;handlers&apos;: [&#123;</div><div class="line">        &apos;name&apos;: &apos;restart_apache&apos;,</div><div class="line">        &apos;service&apos;: &apos;name=httpd state=restarted&apos;</div><div class="line">    &#125;]</div><div class="line">&#125;]</div></pre></td></tr></table></figure></p>
+<h4 id="4-执行playbook"><a href="#4-执行playbook" class="headerlink" title="4.执行playbook"></a>4.执行playbook</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ansible-playbook test.yml  # 重头安装apache</div><div class="line"></div><div class="line">ansible-playbook test.yml -t &quot;reset port&quot;    # 配置文件发生改变后重启</div></pre></td></tr></table></figure>
+<p><strong>执行前检查工作</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ansible-playbook test.yml --syntax-check   # 检查playbook语法</div><div class="line"></div><div class="line"></div><div class="line">ansible-playbook test.yml --check   # 测试playbook脚本，不做任何改变 同 ansible-playbook test.yml -C</div><div class="line"></div><div class="line"></div><div class="line">ansible-playbook test.yml --list-hosts # 列出要执行的主机</div><div class="line"></div><div class="line">ansible-playbook test.yml --list-tasks # 列出所有的task</div><div class="line"></div><div class="line">ansible-playbook test.yml --list-tags  # 列出所有的tag</div></pre></td></tr></table></figure>
+<h4 id="5-ansible使用变量"><a href="#5-ansible使用变量" class="headerlink" title="5.ansible使用变量"></a>5.ansible使用变量</h4><h5 id="etc-ansible-hosts"><a href="#etc-ansible-hosts" class="headerlink" title="/etc/ansible/hosts"></a><code>/etc/ansible/hosts</code></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[test1]</div><div class="line">10.1.1.123:22</div><div class="line"></div><div class="line">[test2]</div><div class="line">10.1.1.124 key=123</div><div class="line"></div><div class="line">[test3]</div><div class="line">10.1.1.122 ansible_connection=local</div><div class="line"></div><div class="line">[test4]</div><div class="line">10.1.1.123</div><div class="line">[test4:vars]</div><div class="line">ansible_ssh_user=root</div><div class="line">ansible_ssh_passwd=Nihao,123</div><div class="line">src=/root/1</div><div class="line"></div><div class="line">[server:children]</div><div class="line">test1</div><div class="line">test2</div><div class="line"></div><div class="line">[test_server]</div><div class="line">ansible_test[1:2]</div><div class="line"></div><div class="line">[all:vars]</div><div class="line">key=7788</div></pre></td></tr></table></figure>
+<h5 id="root-test-yml"><a href="#root-test-yml" class="headerlink" title="/root/test.yml"></a><code>/root/test.yml</code></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line"> - hosts: all</div><div class="line">   tasks:</div><div class="line">   - name: hahaha</div><div class="line">     debug: msg=&quot; The &#123;&#123; inventory_hostname &#125;&#125; key is &#123;&#123; key &#125;&#125;&quot;</div></pre></td></tr></table></figure>
+<h5 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">TASK [hahaha] ******************************************************************</div><div class="line">ok: [10.1.1.123] =&gt; &#123;</div><div class="line">    &quot;msg&quot;: &quot; The 10.1.1.123 key is 7788&quot;</div><div class="line">&#125;</div><div class="line">ok: [10.1.1.124] =&gt; &#123;</div><div class="line">    &quot;msg&quot;: &quot; The 10.1.1.124 key is 123&quot;</div><div class="line">&#125;</div><div class="line">ok: [ansible_test1] =&gt; &#123;</div><div class="line">    &quot;msg&quot;: &quot; The ansible_test1 key is 7788&quot;</div><div class="line">&#125;</div><div class="line">ok: [10.1.1.122] =&gt; &#123;</div><div class="line">    &quot;msg&quot;: &quot; The 10.1.1.122 key is 7788&quot;</div><div class="line">&#125;</div><div class="line">ok: [ansible_test2] =&gt; &#123;</div><div class="line">    &quot;msg&quot;: &quot; The ansible_test2 key is 7788&quot;</div></pre></td></tr></table></figure>
+<h4 id="6-Ansible-playbook与Ad-Hoc的关系"><a href="#6-Ansible-playbook与Ad-Hoc的关系" class="headerlink" title="6.Ansible playbook与Ad-Hoc的关系"></a>6.Ansible playbook与Ad-Hoc的关系</h4><ol>
+<li>playbook是对AD-Hoc的一种编排方式；</li>
+<li>playbook可以持久运行，而Ad-Hoc只能临时执行；</li>
+<li>playbook适合复杂重复的任务，而Ad-Hoc适合做快速简单的任务；</li>
+<li>playbook可以控制任务的现后顺序，以及相互依赖的关系。</li>
+</ol>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#1. playbook的书写</div><div class="line">缩进用空格，不能用tab</div><div class="line">冒号短横后，必须加空格</div><div class="line">短横列表项，一杠一空格</div><div class="line"></div><div class="line">#2. playbook与Ad-Hoc关系</div><div class="line">Ad-Hoc类似于‘cat’、‘grep’等命令，而playbook就相当于shell脚本。</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -522,7 +549,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/" title="ansible配置文件详解（三）">https://8192bit.top/2019/09/28/ansible配置文件详解（三）/</a>
+    <a href="https://8192bit.top/2019/09/22/ansible-playbook之我的第一个playbook（九）/" title="ansible-playbook之我的第一个playbook（九）">https://8192bit.top/2019/09/22/ansible-playbook之我的第一个playbook（九）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -550,8 +577,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/27/ansible相关命令及常用选项（四）/" rel="next" title="ansible相关命令及常用选项（四）">
-                <i class="fa fa-chevron-left"></i> ansible相关命令及常用选项（四）
+              <a href="/2019/09/21/ansible-playbook之变量（十）/" rel="next" title="ansible-playbook之变量（十）">
+                <i class="fa fa-chevron-left"></i> ansible-playbook之变量（十）
               </a>
             
           </div>
@@ -560,8 +587,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/29/ansible安装（二）/" rel="prev" title="ansible安装（二）">
-                ansible安装（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/23/ansbile-playbook之yaml语法规则（八）/" rel="prev" title="ansbile-playbook之yaml语法规则（八）">
+                ansbile-playbook之yaml语法规则（八） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -741,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用配置文件详解"><span class="nav-number">1.</span> <span class="nav-text">常用配置文件详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用设置"><span class="nav-number">2.</span> <span class="nav-text">常用设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个playbook"><span class="nav-number">2.</span> <span class="nav-text">第一个playbook</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-定义主机清单"><span class="nav-number">2.1.</span> <span class="nav-text">1.定义主机清单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-明确playbook任务"><span class="nav-number">2.2.</span> <span class="nav-text">2.明确playbook任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-书写playbook"><span class="nav-number">2.3.</span> <span class="nav-text">3. 书写playbook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-执行playbook"><span class="nav-number">2.4.</span> <span class="nav-text">4.执行playbook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-ansible使用变量"><span class="nav-number">2.5.</span> <span class="nav-text">5.ansible使用变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#etc-ansible-hosts"><span class="nav-number">2.5.1.</span> <span class="nav-text">/etc/ansible/hosts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#root-test-yml"><span class="nav-number">2.5.2.</span> <span class="nav-text">/root/test.yml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#输出结果"><span class="nav-number">2.5.3.</span> <span class="nav-text">输出结果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Ansible-playbook与Ad-Hoc的关系"><span class="nav-number">2.6.</span> <span class="nav-text">6.Ansible playbook与Ad-Hoc的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

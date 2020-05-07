@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="Ansible的配置文件详解">
+<meta name="description" content="YAML是一个可读性高，用来表达序列化的格式。其配置文件后缀为.yml，如test.yml。">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ansible配置文件详解（三）">
-<meta property="og:url" content="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/index.html">
+<meta property="og:title" content="ansbile-playbook之yaml语法规则（八）">
+<meta property="og:url" content="https://8192bit.top/2019/09/23/ansbile-playbook之yaml语法规则（八）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="Ansible的配置文件详解">
+<meta property="og:description" content="YAML是一个可读性高，用来表达序列化的格式。其配置文件后缀为.yml，如test.yml。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T09:11:15.025Z">
+<meta property="og:updated_time" content="2020-05-07T01:39:45.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ansible配置文件详解（三）">
-<meta name="twitter:description" content="Ansible的配置文件详解">
+<meta name="twitter:title" content="ansbile-playbook之yaml语法规则（八）">
+<meta name="twitter:description" content="YAML是一个可读性高，用来表达序列化的格式。其配置文件后缀为.yml，如test.yml。">
 
 
 
@@ -150,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/"/>
+  <link rel="canonical" href="https://8192bit.top/2019/09/23/ansbile-playbook之yaml语法规则（八）/"/>
 
 
 
 
 
-  <title>ansible配置文件详解（三） | 8192bit</title>
+  <title>ansbile-playbook之yaml语法规则（八） | 8192bit</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/23/ansbile-playbook之yaml语法规则（八）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="8192bit">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ansible配置文件详解（三）</h1>
+          <h1 class="post-title" itemprop="name headline">ansbile-playbook之yaml语法规则（八）</h1>
         
 
         <div class="post-meta">
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T16:20:18+08:00">
-                2019-09-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T16:20:18+08:00">
+                2019-09-23
               </time>
             
 
@@ -426,7 +426,7 @@
 
           
           
-             <span id="/2019/09/28/ansible配置文件详解（三）/" class="leancloud_visitors" data-flag-title="ansible配置文件详解（三）">
+             <span id="/2019/09/23/ansbile-playbook之yaml语法规则（八）/" class="leancloud_visitors" data-flag-title="ansbile-playbook之yaml语法规则（八）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  399 字
+                  806 字
                 </span>
               
 
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -489,11 +489,55 @@
       
 
       
-        <blockquote class="blockquote-center"><p>Ansible的配置文件详解</p>
+        <blockquote class="blockquote-center"><p>YAML是一个可读性高，用来表达序列化的格式。其配置文件后缀为.yml，如test.yml。</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="常用配置文件详解"><a href="#常用配置文件详解" class="headerlink" title="常用配置文件详解"></a>常用配置文件详解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"># 目录地址:  /etc/ansible/ansible.cfg</div><div class="line"></div><div class="line">[defaults]</div><div class="line">#inventory      = /etc/ansible/hosts            # 定义Inventory</div><div class="line">#library        = /usr/share/my_modules/        # 自定义lib库存放目录</div><div class="line">#remote_tmp     = ~/.ansible/tmp                # 临时文件远程主机存放目录</div><div class="line">#local_tmp      = ~/.ansible/tmp                # 临时文件本地存放目录</div><div class="line">#forks          = 5                                # 默认开启的并发数，通过-f选项指定</div><div class="line">#poll_interval  = 15                            # 默认轮询时间剑客</div><div class="line">#sudo_user      = root                            # 默认sudo用户</div><div class="line">#ask_sudo_pass = True                            # 是否需要sudo密码</div><div class="line">#ask_pass      = True                            # 是否需要密码</div><div class="line">#transport      = smart                            # </div><div class="line">#remote_port    = 22</div><div class="line">#module_lang    = C</div><div class="line">#module_set_locale = False</div><div class="line">#roles_path    = /etc/ansible/roles                # 默认下载的roles存放目录</div><div class="line">#host_key_checking = False                        # 首次连接是否需要检查key认证，建议设为false</div><div class="line">#timeout = 10                                    # 默认超时时间</div><div class="line">#log_path = /var/log/ansible.log                # 执行日志存放目录</div><div class="line">#module_name = command                            # 默认执行的模块</div><div class="line">#fact_caching = memory                            # getfact缓存的主机信息存放方式</div><div class="line">#retry_files_enabled = False</div><div class="line">#retry_files_save_path = ~/.ansible-retry                # 错误重启文件存放目录</div><div class="line"></div><div class="line">[privilege_escalation]    # 安全</div><div class="line">#become=True                    # 是否sudo</div><div class="line">#become_method=sudo                # sudo方式</div><div class="line">#become_user=root                # sudo后变为root用户</div><div class="line">#become_ask_pass=False            # sudo后是否验证密码</div><div class="line"></div><div class="line">[paramiko_connection]</div><div class="line">#record_host_keys=False            # 不记录新主机的key以提升效率</div><div class="line">#pty=False                        # 禁用sudo功能</div><div class="line"></div><div class="line">[ssh_connection]</div><div class="line">#pipelining = False                # 管道加速功能，需配合requiretty使用方可生效</div><div class="line"></div><div class="line">[accelerate]        # ansible连接加速配置</div><div class="line">#accelerate_port = 5099            # 加速连接端口</div><div class="line">#accelerate_timeout = 30        # 命令行执行超时时间(秒)</div><div class="line">#accelerate_connect_timeout = 5.0    # 连接超时时间（秒）</div><div class="line">#accelerate_daemon_timeout = 30        # 上一个活动连接时间(分)</div><div class="line">#accelerate_multi_key = yes</div><div class="line"></div><div class="line"></div><div class="line">[selinux]</div><div class="line">#libvirt_lxc_noseclabel = yes</div><div class="line"></div><div class="line">[colors]</div><div class="line">#highlight = white</div><div class="line">#verbose = blue</div><div class="line">#warn = bright purple            #明亮紫</div><div class="line">#error = red</div><div class="line">#debug = dark gray                #暗灰色</div><div class="line">#deprecate = purple</div><div class="line">#skip = cyan                    #蓝绿</div><div class="line">#unreachable = red</div><div class="line">#ok = green</div><div class="line">#changed = yellow</div><div class="line">#diff_add = green</div><div class="line">#diff_remove = red</div><div class="line">#diff_lines = cyan</div></pre></td></tr></table></figure>
-<h3 id="常用设置"><a href="#常用设置" class="headerlink" title="常用设置"></a>常用设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[defaults]</div><div class="line">host_key_checking = False</div></pre></td></tr></table></figure>
+<h3 id="yaml语法规则"><a href="#yaml语法规则" class="headerlink" title="yaml语法规则"></a>yaml语法规则</h3><ul>
+<li>大小写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进时不允许使用Tab键，只允许使用空格</li>
+<li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li>
+<li>yaml文件以”—“作为文档的开始，”…”作为文档的结束</li>
+<li>#号表示注释</li>
+</ul>
+<h3 id="yaml数据结构"><a href="#yaml数据结构" class="headerlink" title="yaml数据结构"></a>yaml数据结构</h3><ul>
+<li>对象：键值对的结合，又称映射(mapping)/哈希(hash)/字典(directory)</li>
+<li>数组：一组按次序排列的值，又称为序列（sequence） / 列表（list）</li>
+<li>纯量（scalars）：单个的、不可再分的值</li>
+</ul>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>对象的一组键值对，使用冒号结构表示。</p>
+<h5 id="字典嵌套列表"><a href="#字典嵌套列表" class="headerlink" title="字典嵌套列表"></a>字典嵌套列表</h5><p><strong>yaml格式–多行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">fruits:</div><div class="line">  - Apple</div><div class="line">  - Orange</div><div class="line">  - Strawberry</div><div class="line">  - Mango</div></pre></td></tr></table></figure></p>
+<p><strong>yaml格式–单行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">fruits: [&apos;Apple&apos;, &apos;Orange&apos;, &apos;Strawberry&apos;, &apos;Mango&apos;]</div></pre></td></tr></table></figure>
+<p><strong>转换成python</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;fruits&apos;: [&apos;Apple&apos;, &apos;Orange&apos;, &apos;Strawberry&apos;, &apos;Mango&apos;]&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="字典嵌套字典"><a href="#字典嵌套字典" class="headerlink" title="字典嵌套字典"></a>字典嵌套字典</h5><p><strong>yaml格式–多行</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">martin:</div><div class="line">  name: Martin D&apos;vloper</div><div class="line">  job: Developer</div><div class="line">  skill: Elite</div></pre></td></tr></table></figure></p>
+<p><strong>yaml格式–单行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">martin: &#123;name: Martin D&apos;vloper, job: Developer, skill: Elite&#125;</div></pre></td></tr></table></figure>
+<p><strong>转换成python</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;martin&apos;: &#123;&apos;job&apos;: &apos;Developer&apos;, &apos;name&apos;: &quot;Martin D&apos;vloper&quot;, &apos;skill&apos;: &apos;Elite&apos;&#125;&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="混合结构"><a href="#混合结构" class="headerlink" title="混合结构"></a>混合结构</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- martin:</div><div class="line">  name: Martin D&apos;vloper</div><div class="line">  job: Developer</div><div class="line">  skills:</div><div class="line">    - python</div><div class="line">    - perl</div><div class="line">    - pascal</div><div class="line">- tabitha:</div><div class="line">  name: Tabinha Bitumen</div><div class="line">  job: Developer</div><div class="line">  skills:</div><div class="line">    - lisp</div><div class="line">    - fortran</div><div class="line">    - erlang</div></pre></td></tr></table></figure>
+<p><strong>转换为python格式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&#123;&apos;martin&apos;:&#123;&apos;name&apos;:&apos;Martin D&apos;vloper&apos;,&apos;job&apos;:&apos;Developer&apos;,&apos;skills&apos;:[&apos;python&apos;,&apos;perl&apos;,&apos;pascal&apos;]&#125;&#125;,&#123;&apos;tabitha&apos;:&#123;&apos;name&apos;:&apos;Tabinha Bitumen&apos;,&apos;job&apos;:&apos;Developer&apos;,&apos;skills&apos;:[&apos;lisp&apos;,&apos;fortran&apos;,&apos;erlang&apos;]&#125;&#125;]</div></pre></td></tr></table></figure>
+<h4 id="纯量"><a href="#纯量" class="headerlink" title="纯量"></a>纯量</h4><p><strong>数值</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">number: 15</div><div class="line">float: 13.30</div></pre></td></tr></table></figure></p>
+<p>转换成python<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;number&apos;: 12, &apos;float&apos;: 12.3&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>布尔值</strong><br>表示true的值<br>true, True, TRUE, yes, Yes, YES, on, On, ON</p>
+<p>表示false的值<br>false, False, FALSE, no, No, NO, off, Off, OFF</p>
+<p><strong>None</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">parent: ~</div></pre></td></tr></table></figure>
+<p><strong>数据转换</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">number: !!str 123</div><div class="line">bool: !!str true</div></pre></td></tr></table></figure></p>
+<p>转换成python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;number&apos;: &apos;123&apos;, &apos;bool&apos;: &apos;true&apos;&#125;</div></pre></td></tr></table></figure>
+<p><strong>字符串</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line"># 1. 字符串默认不适用引号</div><div class="line">str1: 这是一行字符串</div><div class="line"></div><div class="line"># 2. 如果字符串之中包含空格或特殊字符，需要放在引号之中。</div><div class="line">str2: &quot;内容： *字符串串&quot;</div><div class="line"></div><div class="line"># 3. 单引号和双引号都可以使用，双引号不会对特殊字符转义</div><div class="line">str3: &apos;内容\n字符串&apos;</div><div class="line">str4: &quot;content\n string&quot;</div><div class="line"></div><div class="line"># 4.单引号之中如果还有单引号，必须连续使用两个单引号转义。</div><div class="line">str5: &apos;this&apos;&apos;s an pen&apos;</div><div class="line"></div><div class="line"># 5. 字符串可以写成多行，从第二行开始，必须有一个单空格缩进。换行符会被转为空格</div><div class="line">strline1: 这是</div><div class="line"> 一段</div><div class="line"> 字符</div><div class="line"> 串串</div><div class="line"> 们</div><div class="line"># 6. 多行字符串可以使用|(+保留、-删除)换行符，也可以使用&gt;折叠换行</div><div class="line">strline2: |</div><div class="line">  Foo</div><div class="line">  Bar</div><div class="line">strline3: |+</div><div class="line">  Foo</div><div class="line">  Bar</div><div class="line">strline4: |-</div><div class="line">  Foo</div><div class="line">  Bar</div><div class="line">strline5: &gt;</div><div class="line">  Foo</div><div class="line">  Bar</div></pre></td></tr></table></figure>
+<p>转换成python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">'str1'</span>: <span class="string">'这是一行字符串'</span>, <span class="string">'str2'</span>: <span class="string">'内容： *字符串串'</span>, <span class="string">'str3'</span>: <span class="string">'内容\\n字符串'</span>, <span class="string">'str4'</span>: <span class="string">'content\n string'</span>, <span class="string">'str5'</span>: <span class="string">"this's an pen"</span>, <span class="string">'strline1'</span>: <span class="string">'这是 一段 字符 串串 们'</span>, <span class="string">'strline2'</span>: <span class="string">'Foo\nBar\n'</span>, <span class="string">'strline3'</span>: <span class="string">'Foo\nBar\n'</span>, <span class="string">'strline4'</span>: <span class="string">'Foo\nBar'</span>, <span class="string">'strline5'</span>: <span class="string">'Foo Bar\n'</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="yaml高级用法"><a href="#yaml高级用法" class="headerlink" title="yaml高级用法"></a>yaml高级用法</h3><h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">defaults: &amp;defaults</div><div class="line">  adapter:  postgres</div><div class="line">  host:     localhost</div><div class="line"></div><div class="line">development:</div><div class="line">  database: myapp_development</div><div class="line">  &lt;&lt;: *defaults</div><div class="line"></div><div class="line">test:</div><div class="line">  database: myapp_test</div><div class="line">  &lt;&lt;: *defaults</div></pre></td></tr></table></figure>
+<p>转换成python<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;defaults&apos;: &#123;&apos;adapter&apos;: &apos;postgres&apos;, &apos;host&apos;: &apos;localhost&apos;&#125;, &apos;development&apos;: &#123;&apos;adapter&apos;: &apos;postgres&apos;, &apos;host&apos;: &apos;localhost&apos;, &apos;database&apos;: &apos;myapp_development&apos;&#125;, &apos;test&apos;: &#123;&apos;adapter&apos;: &apos;postgres&apos;, &apos;host&apos;: &apos;localhost&apos;, &apos;database&apos;: &apos;myapp_test&apos;&#125;&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>另外一种</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- &amp;showell Steve</div><div class="line">- Clark</div><div class="line">- Brian</div><div class="line">- Oren</div><div class="line">- *showell</div></pre></td></tr></table></figure></p>
+<p>转换成python<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&apos;Steve&apos;, &apos;Clark&apos;, &apos;Brian&apos;, &apos;Oren&apos;, &apos;Steve&apos;]</div></pre></td></tr></table></figure></p>
+<p><strong>引用变量</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">name: &quot;&#123;&#123; value &#125;&#125;&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="yaml与python"><a href="#yaml与python" class="headerlink" title="yaml与python"></a>yaml与python</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">pip install PyYAML</div></pre></td></tr></table></figure>
+<h4 id="test-yaml"><a href="#test-yaml" class="headerlink" title="test.yaml"></a>test.yaml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="yaml-test-py"><a href="#yaml-test-py" class="headerlink" title="yaml_test.py"></a>yaml_test.py</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import yaml</div><div class="line"></div><div class="line"># 读取</div><div class="line">with open(&apos;test.yaml&apos;, &apos;r&apos;, encoding=&apos;utf8&apos;) as f:</div><div class="line">    y=yaml.load(f)</div><div class="line">    print(type(y))</div><div class="line">    print(y)</div><div class="line"></div><div class="line"># 写入</div><div class="line">with open(&apos;test.yaml&apos;, &apos;a&apos;, encoding=&apos;utf8&apos;) as f:</div><div class="line">    d = &#123;&quot;cookie1&quot;:&#123;&apos;domain&apos;: &apos;.yiyao.cc&apos;, &apos;expiry&apos;: 1521558688.480118, &apos;httpOnly&apos;: False, &apos;name&apos;: &apos;_ui_&apos;, &apos;path&apos;: &apos;/&apos;, &apos;secure&apos;: False, &apos;value&apos;: &apos;HSX9fJjjCIImOJoPUkv/QA==&apos;&#125;&#125;</div><div class="line">    y = yaml.dump(d, f)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -522,7 +566,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://8192bit.top/2019/09/28/ansible配置文件详解（三）/" title="ansible配置文件详解（三）">https://8192bit.top/2019/09/28/ansible配置文件详解（三）/</a>
+    <a href="https://8192bit.top/2019/09/23/ansbile-playbook之yaml语法规则（八）/" title="ansbile-playbook之yaml语法规则（八）">https://8192bit.top/2019/09/23/ansbile-playbook之yaml语法规则（八）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -550,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/27/ansible相关命令及常用选项（四）/" rel="next" title="ansible相关命令及常用选项（四）">
-                <i class="fa fa-chevron-left"></i> ansible相关命令及常用选项（四）
+              <a href="/2019/09/22/ansible-playbook之我的第一个playbook（九）/" rel="next" title="ansible-playbook之我的第一个playbook（九）">
+                <i class="fa fa-chevron-left"></i> ansible-playbook之我的第一个playbook（九）
               </a>
             
           </div>
@@ -560,8 +604,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/29/ansible安装（二）/" rel="prev" title="ansible安装（二）">
-                ansible安装（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/24/ansible的Ad-Hoc（七）/" rel="prev" title="ansible的Ad-Hoc（七）">
+                ansible的Ad-Hoc（七） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -741,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用配置文件详解"><span class="nav-number">1.</span> <span class="nav-text">常用配置文件详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用设置"><span class="nav-number">2.</span> <span class="nav-text">常用设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#yaml语法规则"><span class="nav-number">1.</span> <span class="nav-text">yaml语法规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaml数据结构"><span class="nav-number">2.</span> <span class="nav-text">yaml数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">2.1.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字典嵌套列表"><span class="nav-number">2.1.1.</span> <span class="nav-text">字典嵌套列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字典嵌套字典"><span class="nav-number">2.1.2.</span> <span class="nav-text">字典嵌套字典</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混合结构"><span class="nav-number">2.1.3.</span> <span class="nav-text">混合结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯量"><span class="nav-number">2.2.</span> <span class="nav-text">纯量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaml高级用法"><span class="nav-number">3.</span> <span class="nav-text">yaml高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">3.1.</span> <span class="nav-text">引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaml与python"><span class="nav-number">4.</span> <span class="nav-text">yaml与python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#test-yaml"><span class="nav-number">4.1.</span> <span class="nav-text">test.yaml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yaml-test-py"><span class="nav-number">4.2.</span> <span class="nav-text">yaml_test.py</span></a></li></ol></li></ol></div>
             
 
           </div>
