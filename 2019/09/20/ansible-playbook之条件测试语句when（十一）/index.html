@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="8192bit">
 <meta property="og:description" content="在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-11T07:08:36.182Z">
+<meta property="og:updated_time" content="2020-05-11T13:58:26.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible-playbook之条件测试语句when（十一）">
 <meta name="twitter:description" content="在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。">
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  294 字
+                  414 字
                 </span>
               
 
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -496,6 +496,9 @@
 <h4 id="示例二：-根据包含web主机名，设置yum仓库"><a href="#示例二：-根据包含web主机名，设置yum仓库" class="headerlink" title="示例二： 根据包含web主机名，设置yum仓库"></a>示例二： 根据包含web主机名，设置yum仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: all</div><div class="line">  tasks:</div><div class="line">    - name: add nginx repos</div><div class="line">      yum_repository:</div><div class="line">        name: nginx_test</div><div class="line">        description: Nginx YUM repo</div><div class="line">        baseurl: http://nginx.org/packages/centos/7/$basear</div><div class="line">        gpgcheck: no</div><div class="line">      when:</div><div class="line">#        ansible_hostname is match &quot;ansible*&quot;    # 单条匹配</div><div class="line">        (ansible_hostname is match &quot;ansible01&quot;) or</div><div class="line">        (ansible_hostname is match &quot;ansible02&quot;)   # 使用or 或者 and 时， 前后语句要加小括号，不加不会报错只执行前没</div></pre></td></tr></table></figure>
 <h4 id="示例三：-使用vars与when使用"><a href="#示例三：-使用vars与when使用" class="headerlink" title="示例三： 使用vars与when使用"></a>示例三： 使用vars与when使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: ansible02</div><div class="line">  vars:</div><div class="line">    flag: true</div><div class="line">  tasks:</div><div class="line">  - name: Reboot service</div><div class="line">    shell: reboot</div><div class="line">    when:</div><div class="line">      not flag    # 根据布尔值判断是否需要重启，当flag为false时，重启ansible02</div></pre></td></tr></table></figure>
 <h4 id="示例四：-使用when判断数字大小"><a href="#示例四：-使用when判断数字大小" class="headerlink" title="示例四： 使用when判断数字大小"></a>示例四： 使用when判断数字大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: ansible01</div><div class="line">  tasks:</div><div class="line">    - name: output text</div><div class="line">      shell: echo &quot;system version gt 6&quot;</div><div class="line">      register: result</div><div class="line">      when:</div><div class="line">        ansible_distribution_major_version|int &gt; 6  # 将字符串转整型再判断</div><div class="line">    - name: output result</div><div class="line">      debug:</div><div class="line">        msg: &quot;&#123;&#123; result &#125;&#125;&quot;</div></pre></td></tr></table></figure>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h4 id="示例五：-changed-when抑制状态"><a href="#示例五：-changed-when抑制状态" class="headerlink" title="示例五： changed_when抑制状态"></a>示例五： changed_when抑制状态</h4><p>当我们在执行一些task，明明没有发生任何改变，却始终在结果里看到changed=1类似的字样，如何将changed状态改成OK，看如下示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># test_changed_when.yml</div><div class="line"></div><div class="line">---</div><div class="line"> - hosts: webserver</div><div class="line">   tasks:</div><div class="line">     - name: output netstat result</div><div class="line">       shell: netstat -lntp|grep httpd</div><div class="line">       register: result</div><div class="line">       changed_when: false</div><div class="line"></div><div class="line">     - name: output result</div><div class="line">       debug:</div><div class="line">         msg: &quot;&#123;&#123; result.stdout_lines &#125;&#125;&quot;</div></pre></td></tr></table></figure>
+<h4 id="示例六：-failed-when制造异常"><a href="#示例六：-failed-when制造异常" class="headerlink" title="示例六： failed_when制造异常"></a>示例六： failed_when制造异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># test_failed_when.yml</div><div class="line"></div><div class="line">---</div><div class="line">- hosts: all</div><div class="line">  tasks:</div><div class="line">    - name: Ignore False</div><div class="line">      shell: echo &quot;this is task running FAILED&quot;</div><div class="line">      failed_when: true</div><div class="line"></div><div class="line">    - name: touch new file</div><div class="line">      file:</div><div class="line">        path: /tmp/egm</div><div class="line">        state: touch</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -743,7 +746,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例一：-根据不同操作系统，安装相同的软件"><span class="nav-number">1.</span> <span class="nav-text">示例一： 根据不同操作系统，安装相同的软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例二：-根据包含web主机名，设置yum仓库"><span class="nav-number">2.</span> <span class="nav-text">示例二： 根据包含web主机名，设置yum仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例三：-使用vars与when使用"><span class="nav-number">3.</span> <span class="nav-text">示例三： 使用vars与when使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例四：-使用when判断数字大小"><span class="nav-number">4.</span> <span class="nav-text">示例四： 使用when判断数字大小</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例一：-根据不同操作系统，安装相同的软件"><span class="nav-number">1.</span> <span class="nav-text">示例一： 根据不同操作系统，安装相同的软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例二：-根据包含web主机名，设置yum仓库"><span class="nav-number">2.</span> <span class="nav-text">示例二： 根据包含web主机名，设置yum仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例三：-使用vars与when使用"><span class="nav-number">3.</span> <span class="nav-text">示例三： 使用vars与when使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例四：-使用when判断数字大小"><span class="nav-number">4.</span> <span class="nav-text">示例四： 使用when判断数字大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number"></span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例五：-changed-when抑制状态"><span class="nav-number">1.</span> <span class="nav-text">示例五： changed_when抑制状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例六：-failed-when制造异常"><span class="nav-number">2.</span> <span class="nav-text">示例六： failed_when制造异常</span></a></li></ol></div>
             
 
           </div>

@@ -3,6 +3,52 @@
 
 
     
+  <url>
+    <loc>https://8192bit.top/2019/09/20/ansible-playbook%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%AF%AD%E5%8F%A5when%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</loc>
+    <lastmod>2020-05-11T13:58:26.778Z</lastmod>
+    <data>
+        <display>
+        <title>ansible-playbook之条件测试语句when（十一）</title>
+        <pubTime>2019-09-20T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://8192bit.top/2019/09/15/ansible_playbook%E4%B9%8B%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89/</loc>
+    <lastmod>2020-05-11T13:57:59.172Z</lastmod>
+    <data>
+        <display>
+        <title>ansible_playbook之异常处理（十六）</title>
+        <pubTime>2019-09-15T08:20:18.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>https://8192bit.top/2019/09/16/ansible-playbook%E4%B9%8B%E6%96%87%E4%BB%B6%E5%A4%8D%E7%94%A8%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89/</loc>
@@ -103,29 +149,6 @@
         <display>
         <title>ansible-playbook之循环（十二）</title>
         <pubTime>2019-09-19T08:20:18.000Z</pubTime>
-        
-        <tag>ansible</tag>
-         
-         
-           
-             
-              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://8192bit.top/2019/09/20/ansible-playbook%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%AF%AD%E5%8F%A5when%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</loc>
-    <lastmod>2020-05-11T07:08:36.182Z</lastmod>
-    <data>
-        <display>
-        <title>ansible-playbook之条件测试语句when（十一）</title>
-        <pubTime>2019-09-20T08:20:18.000Z</pubTime>
         
         <tag>ansible</tag>
          
@@ -333,29 +356,6 @@
         <display>
         <title>ansible简介（一）</title>
         <pubTime>2019-09-30T08:20:18.000Z</pubTime>
-        
-        <tag>ansible</tag>
-         
-         
-           
-             
-              <breadCrumb title="学习笔记" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="自动化工具" url="https://8192bit.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://8192bit.top/2019/09/27/base/</loc>
-    <lastmod>2020-04-29T08:56:57.129Z</lastmod>
-    <data>
-        <display>
-        <title>ansible相关命令及常用选项</title>
-        <pubTime>2019-09-27T08:20:18.000Z</pubTime>
         
         <tag>ansible</tag>
          

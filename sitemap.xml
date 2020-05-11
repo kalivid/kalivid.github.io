@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://8192bit.top/2019/09/20/ansible-playbook%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%AF%AD%E5%8F%A5when%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</loc>
+    
+    <lastmod>2020-05-11T13:58:26.778Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://8192bit.top/2019/09/15/ansible_playbook%E4%B9%8B%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89/</loc>
+    
+    <lastmod>2020-05-11T13:57:59.172Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://8192bit.top//404.html</loc>
     
     <lastmod>2020-05-11T10:22:38.246Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>https://8192bit.top/2019/09/19/ansible-playbook%E4%B9%8B%E5%BE%AA%E7%8E%AF%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89/</loc>
     
     <lastmod>2020-05-11T07:09:32.987Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://8192bit.top/2019/09/20/ansible-playbook%E4%B9%8B%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%AF%AD%E5%8F%A5when%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</loc>
-    
-    <lastmod>2020-05-11T07:08:36.182Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>https://8192bit.top/2019/09/30/ansible%E7%AE%80%E4%BB%8B%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     
     <lastmod>2020-04-29T09:10:37.048Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://8192bit.top/2019/09/27/base/</loc>
-    
-    <lastmod>2020-04-29T08:56:57.129Z</lastmod>
     
   </url>
   
