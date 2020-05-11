@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="8192bit">
 <meta property="og:description" content="Ansible的安装方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-29T09:10:55.917Z">
+<meta property="og:updated_time" content="2020-05-11T07:04:01.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible安装（二）">
 <meta name="twitter:description" content="Ansible的安装方法">
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  182 字
+                  213 字
                 </span>
               
 
@@ -494,6 +494,7 @@
 <a id="more"></a>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="pip方式"><a href="#pip方式" class="headerlink" title="pip方式"></a>pip方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># 安装环境：CentOS Linux release 7.1.1503(Core)</div><div class="line"></div><div class="line"># 步骤1：安装python-pip 及 python-devel程序包</div><div class="line">yum install python-pip python-devel -y</div><div class="line"></div><div class="line">PS: 报错No package python-pip available</div><div class="line">解决方法：</div><div class="line">    1. yum -y install epel-release # 安装epel扩展源</div><div class="line">    2. yum -y install python-pip  # 安装pip</div><div class="line">    3. yum clean all # 清楚cache</div><div class="line">    </div><div class="line"></div><div class="line"># 步骤2：安装Ansible服务</div><div class="line">yum install gcc glibc-devel zlib-devel rpm-build openssl-devel -y   // 安装gcc、glibc开发环境</div><div class="line"></div><div class="line">pip install --upgrade pip  // 升级本地PIP至最新版本</div><div class="line"></div><div class="line">pip install ansible --upgrade  // 安装ansible服务</div><div class="line">PS： 报错Cannot uninstall &apos;six&apos;.It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</div><div class="line"></div><div class="line">解决方法：</div><div class="line">    1. pip install --ignore-installed six</div><div class="line">    2. pip install ansible --upgrade</div></pre></td></tr></table></figure>
 <h4 id="yum安装"><a href="#yum安装" class="headerlink" title="yum安装"></a>yum安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install ansible</div></pre></td></tr></table></figure>
+<h3 id="指定版本安装"><a href="#指定版本安装" class="headerlink" title="指定版本安装"></a>指定版本安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 1. 卸载已经安装的ansible</div><div class="line">pip uninstall ansible</div><div class="line"></div><div class="line"># 2. 安装指定版本</div><div class="line">pip install ansible==2.7.7</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -644,7 +645,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -741,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pip方式"><span class="nav-number">1.1.</span> <span class="nav-text">pip方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yum安装"><span class="nav-number">1.2.</span> <span class="nav-text">yum安装</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pip方式"><span class="nav-number">1.1.</span> <span class="nav-text">pip方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yum安装"><span class="nav-number">1.2.</span> <span class="nav-text">yum安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定版本安装"><span class="nav-number">2.</span> <span class="nav-text">指定版本安装</span></a></li></ol></div>
             
 
           </div>
