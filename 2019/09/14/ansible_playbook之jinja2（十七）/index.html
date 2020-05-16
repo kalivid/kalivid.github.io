@@ -109,18 +109,18 @@
 
 
 
-<meta name="description" content="在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。">
+<meta name="description" content="Jinja2是python的全功能模板索引">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ansible-playbook之条件测试语句when（十一）">
-<meta property="og:url" content="https://8192bit.top/2019/09/20/ansible-playbook之条件测试语句when（十一）/index.html">
+<meta property="og:title" content="ansible_playbook之jinja2（十七）">
+<meta property="og:url" content="https://8192bit.top/2019/09/14/ansible_playbook之jinja2（十七）/index.html">
 <meta property="og:site_name" content="8192bit">
-<meta property="og:description" content="在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。">
+<meta property="og:description" content="Jinja2是python的全功能模板索引">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-11T13:58:26.778Z">
+<meta property="og:updated_time" content="2020-05-16T15:22:49.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ansible-playbook之条件测试语句when（十一）">
-<meta name="twitter:description" content="在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。">
+<meta name="twitter:title" content="ansible_playbook之jinja2（十七）">
+<meta name="twitter:description" content="Jinja2是python的全功能模板索引">
 
 
 
@@ -150,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://8192bit.top/2019/09/20/ansible-playbook之条件测试语句when（十一）/"/>
+  <link rel="canonical" href="https://8192bit.top/2019/09/14/ansible_playbook之jinja2（十七）/"/>
 
 
 
 
 
-  <title>ansible-playbook之条件测试语句when（十一） | 8192bit</title>
+  <title>ansible_playbook之jinja2（十七） | 8192bit</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/20/ansible-playbook之条件测试语句when（十一）/">
+    <link itemprop="mainEntityOfPage" href="https://8192bit.top/2019/09/14/ansible_playbook之jinja2（十七）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="8192bit">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ansible-playbook之条件测试语句when（十一）</h1>
+          <h1 class="post-title" itemprop="name headline">ansible_playbook之jinja2（十七）</h1>
         
 
         <div class="post-meta">
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T16:20:18+08:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-14T16:20:18+08:00">
+                2019-09-14
               </time>
             
 
@@ -426,7 +426,7 @@
 
           
           
-             <span id="/2019/09/20/ansible-playbook之条件测试语句when（十一）/" class="leancloud_visitors" data-flag-title="ansible-playbook之条件测试语句when（十一）">
+             <span id="/2019/09/14/ansible_playbook之jinja2（十七）/" class="leancloud_visitors" data-flag-title="ansible_playbook之jinja2（十七）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  414 字
+                  485 字
                 </span>
               
 
@@ -489,16 +489,23 @@
       
 
       
-        <blockquote class="blockquote-center"><p>在我们使用ansible-playbook进行自动化运维时，会遇到部分任务需要判断，比如：Centos与Ubuntu系统都需要安装http服务，那么就需要使用when判断主机系统，然后调用不同的服务安装不同的服务。</p>
+        <blockquote class="blockquote-center"><p>Jinja2是python的全功能模板索引</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="示例一：-根据不同操作系统，安装相同的软件"><a href="#示例一：-根据不同操作系统，安装相同的软件" class="headerlink" title="示例一： 根据不同操作系统，安装相同的软件"></a>示例一： 根据不同操作系统，安装相同的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># test_when_system.yml</div><div class="line"></div><div class="line">---</div><div class="line">- hosts: all</div><div class="line">  tasks:</div><div class="line">    - name: centos install httpd</div><div class="line">      yum:</div><div class="line">        name: httpd</div><div class="line">        state: present</div><div class="line">      when:</div><div class="line">        ansible_distribution == &quot;CentOS&quot;</div><div class="line">    - name: ubuntu install httpd2</div><div class="line">      apt:</div><div class="line">        name: httpd2</div><div class="line">        state: present</div><div class="line">      when:</div><div class="line">        ansible_distribution == &quot;Ubuntu&quot;</div></pre></td></tr></table></figure>
-<h4 id="示例二：-根据包含web主机名，设置yum仓库"><a href="#示例二：-根据包含web主机名，设置yum仓库" class="headerlink" title="示例二： 根据包含web主机名，设置yum仓库"></a>示例二： 根据包含web主机名，设置yum仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: all</div><div class="line">  tasks:</div><div class="line">    - name: add nginx repos</div><div class="line">      yum_repository:</div><div class="line">        name: nginx_test</div><div class="line">        description: Nginx YUM repo</div><div class="line">        baseurl: http://nginx.org/packages/centos/7/$basear</div><div class="line">        gpgcheck: no</div><div class="line">      when:</div><div class="line">#        ansible_hostname is match &quot;ansible*&quot;    # 单条匹配</div><div class="line">        (ansible_hostname is match &quot;ansible01&quot;) or</div><div class="line">        (ansible_hostname is match &quot;ansible02&quot;)   # 使用or 或者 and 时， 前后语句要加小括号，不加不会报错只执行前没</div></pre></td></tr></table></figure>
-<h4 id="示例三：-使用vars与when使用"><a href="#示例三：-使用vars与when使用" class="headerlink" title="示例三： 使用vars与when使用"></a>示例三： 使用vars与when使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: ansible02</div><div class="line">  vars:</div><div class="line">    flag: true</div><div class="line">  tasks:</div><div class="line">  - name: Reboot service</div><div class="line">    shell: reboot</div><div class="line">    when:</div><div class="line">      not flag    # 根据布尔值判断是否需要重启，当flag为false时，重启ansible02</div></pre></td></tr></table></figure>
-<h4 id="示例四：-使用when判断数字大小"><a href="#示例四：-使用when判断数字大小" class="headerlink" title="示例四： 使用when判断数字大小"></a>示例四： 使用when判断数字大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">- hosts: ansible01</div><div class="line">  tasks:</div><div class="line">    - name: output text</div><div class="line">      shell: echo &quot;system version gt 6&quot;</div><div class="line">      register: result</div><div class="line">      when:</div><div class="line">        ansible_distribution_major_version|int &gt; 6  # 将字符串转整型再判断</div><div class="line">    - name: output result</div><div class="line">      debug:</div><div class="line">        msg: &quot;&#123;&#123; result &#125;&#125;&quot;</div></pre></td></tr></table></figure>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><h4 id="示例五：-changed-when抑制状态"><a href="#示例五：-changed-when抑制状态" class="headerlink" title="示例五： changed_when抑制状态"></a>示例五： changed_when抑制状态</h4><p>当我们在执行一些task，明明没有发生任何改变，却始终在结果里看到changed=1类似的字样，如何将changed状态改成OK，看如下示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># test_changed_when.yml</div><div class="line"></div><div class="line">---</div><div class="line"> - hosts: webserver</div><div class="line">   tasks:</div><div class="line">     - name: output netstat result</div><div class="line">       shell: netstat -lntp|grep httpd</div><div class="line">       register: result</div><div class="line">       changed_when: false</div><div class="line"></div><div class="line">     - name: output result</div><div class="line">       debug:</div><div class="line">         msg: &quot;&#123;&#123; result.stdout_lines &#125;&#125;&quot;</div></pre></td></tr></table></figure>
-<h4 id="示例六：-failed-when制造异常"><a href="#示例六：-failed-when制造异常" class="headerlink" title="示例六： failed_when制造异常"></a>示例六： failed_when制造异常</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># test_failed_when.yml</div><div class="line"></div><div class="line">---</div><div class="line">- hosts: all</div><div class="line">  tasks:</div><div class="line">    - name: Ignore False</div><div class="line">      shell: echo &quot;this is task running FAILED&quot;</div><div class="line">      failed_when: true</div><div class="line"></div><div class="line">    - name: touch new file</div><div class="line">      file:</div><div class="line">        path: /tmp/egm</div><div class="line">        state: touch</div></pre></td></tr></table></figure>
+<h3 id="Jinja2与Ansible"><a href="#Jinja2与Ansible" class="headerlink" title="Jinja2与Ansible"></a>Jinja2与Ansible</h3><p>Ansible通常使用Jinja2文件定义配置文件，再推送到不同的被控端生成不同的配置文件。</p>
+<h3 id="Ansible使用Jinja2"><a href="#Ansible使用Jinja2" class="headerlink" title="Ansible使用Jinja2"></a>Ansible使用Jinja2</h3><p>ansible是使用Jinja2模版，通常需要与template模块搭配使用。该模块用法跟copy模块近乎类似，都能够把主控端配置文件推送到被控端，不同之处在于template模块会渲染文件里面的Jinja2语法，而copy则是将文件完整复制到被控端(文件md5值不会发生变化)。</p>
+<h3 id="Ansible使用Jinja2注意事项"><a href="#Ansible使用Jinja2注意事项" class="headerlink" title="Ansible使用Jinja2注意事项"></a>Ansible使用Jinja2注意事项</h3><p>Jinja2可以使用循环及条件判断等语法，但此语法不适用于ansible-playbook。</p>
+<h3 id="Jinja2基本用法"><a href="#Jinja2基本用法" class="headerlink" title="Jinja2基本用法"></a>Jinja2基本用法</h3><p>1.循环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% for i in range(20) %&#125;</div><div class="line"></div><div class="line">echo &#123;&#123; i &#125;&#125;</div><div class="line"></div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure>
+<p>2.条件判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% if age &gt;= 18 %&#125;</div><div class="line">   echo &quot;成年人&quot;</div><div class="line">&#123;% elif age &lt;= 5 %&#125;</div><div class="line">   echo &quot;幼稚园&quot;</div><div class="line">&#123;% else %&#125;</div><div class="line">   echo &quot;嗯，是个人&quot;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<p>3.注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;# 这是一段注释 #&#125;</div></pre></td></tr></table></figure>
+<h4 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># jinja2.yml</div><div class="line"></div><div class="line">---</div><div class="line">- hosts: ansible02</div><div class="line">  tasks:</div><div class="line">    - name: jinja2 use test</div><div class="line">      template:</div><div class="line">        src: test.j2</div><div class="line">        dest: /tmp/test</div><div class="line"></div><div class="line"></div><div class="line"># test.j2</div><div class="line">################# system info #################</div><div class="line">hostname:&#123;&#123; ansible_hostname &#125;&#125;</div><div class="line">ip_address: &#123;&#123; ansible_ens33.ipv4.address &#125;&#125;</div><div class="line">cpu_cores: &#123;&#123; ansible_processor_cores * ansible_processor_count &#125;&#125;</div></pre></td></tr></table></figure>
+<p>jinja2官网：<a href="https://jinja.palletsprojects.com/" target="_blank" rel="external">https://jinja.palletsprojects.com/</a></p>
+<h3 id="实用示例"><a href="#实用示例" class="headerlink" title="实用示例"></a>实用示例</h3><h4 id="循环管理NginxProxy"><a href="#循环管理NginxProxy" class="headerlink" title="循环管理NginxProxy"></a>循环管理NginxProxy</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># jinja_nginx_proxy.yml</div><div class="line"></div><div class="line">---</div><div class="line">  - hosts: webserver</div><div class="line">    vars:</div><div class="line">      http_port: 8081</div><div class="line">      servername: 8192bit.top</div><div class="line">    tasks:</div><div class="line">      - name: Copy Nginx configure</div><div class="line">        template:</div><div class="line">          src: 8192bit.top.j2</div><div class="line">          dest: /etc/nginx/conf.d/8192bit.top.conf</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 8192bit.top.j2</div><div class="line"></div><div class="line">upstream &#123;&#123; servername &#125;&#125; &#123;</div><div class="line">        &#123;% for i in range(1,10) %&#125;</div><div class="line">        server 10.1.1.&#123;&#123; i &#125;&#125;:&#123;&#123; http_port &#125;&#125;</div><div class="line">        &#123;% endfor %&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">        listen &#123;&#123; http_port &#125;&#125;;</div><div class="line">        server_name &#123;&#123; servername &#125;&#125;;</div><div class="line">        location / &#123;</div><div class="line">                proxy_pass &#123;&#123; servername &#125;&#125;;</div><div class="line">                proxy_set_header Host $tcp_host;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="判断管理Keepalived"><a href="#判断管理Keepalived" class="headerlink" title="判断管理Keepalived"></a>判断管理Keepalived</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"># jinja_keepalived.yml</div><div class="line"></div><div class="line">---</div><div class="line">  - hosts: webserver</div><div class="line">    tasks:</div><div class="line">      - name: Copy Keepalived configure</div><div class="line">        template:</div><div class="line">          src: keepalived.conf.j2</div><div class="line">          dest: /apps/conf/keepalived/keepalive.conf</div><div class="line">        notify: Restart keepalived server</div><div class="line"></div><div class="line">    handlers:</div><div class="line">      - name: Restart keepalived server</div><div class="line">        shell: /apps/sh/keepalived.sh restart</div><div class="line"></div><div class="line"></div><div class="line">#  keepalived.conf.j2</div><div class="line"></div><div class="line">global_defs &#123;</div><div class="line">    route_id &#123;&#123; ansible_hostname &#125;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_instance VI_1 &#123;</div><div class="line">&#123;% if ansile_hostname == &quot;ansible02&quot; %&#125;</div><div class="line">    state MASTER</div><div class="line">    priortity 150</div><div class="line">&#123;% elif ansile_hostname == &quot;ansible03&quot; %&#125;</div><div class="line">    state BACKUP</div><div class="line">    priortity 100</div><div class="line">&#123;% endif %&#125;</div><div class="line">    interfac ens33</div><div class="line">    virtual_route_id 50</div><div class="line">    advert_int 1</div><div class="line">    authentication &#123;</div><div class="line">        auth_type PASS</div><div class="line">        auth_pass 1111</div><div class="line">    &#125;</div><div class="line">    virtual_ipaddress &#123;</div><div class="line">        10.1.1.253</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="自定义判断管理Mysql端口"><a href="#自定义判断管理Mysql端口" class="headerlink" title="自定义判断管理Mysql端口"></a>自定义判断管理Mysql端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># jinja_mysql.yml</div><div class="line"></div><div class="line">---</div><div class="line">  - hosts: ansible02</div><div class="line">    vars:</div><div class="line">      mysql_port: 13306</div><div class="line">      #mysql_port: false    # vars参数不能删除，删除task会执行失败；触发else条件</div><div class="line">    tasks:</div><div class="line">      - name: Copy Nginx configure</div><div class="line">        template:</div><div class="line">          src: mysqld.conf.j2</div><div class="line">          dest: /tmp/mysqld.conf</div><div class="line"></div><div class="line"></div><div class="line"># mysqld.conf.j2</div><div class="line"></div><div class="line">&#123;% if mysql_port %&#125;</div><div class="line">bind-address=0.0.0.0:&#123;&#123; mysql_port &#125;&#125;</div><div class="line">&#123;% else %&#125;</div><div class="line">bind-address=0.0.0.0</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -527,7 +534,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://8192bit.top/2019/09/20/ansible-playbook之条件测试语句when（十一）/" title="ansible-playbook之条件测试语句when（十一）">https://8192bit.top/2019/09/20/ansible-playbook之条件测试语句when（十一）/</a>
+    <a href="https://8192bit.top/2019/09/14/ansible_playbook之jinja2（十七）/" title="ansible_playbook之jinja2（十七）">https://8192bit.top/2019/09/14/ansible_playbook之jinja2（十七）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -555,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/ansible-playbook之循环（十二）/" rel="next" title="ansible-playbook之循环（十二）">
-                <i class="fa fa-chevron-left"></i> ansible-playbook之循环（十二）
+              <a href="/2019/09/13/ansible-playbook之roles（十八）/" rel="next" title="ansible-playbook之roles（十八）">
+                <i class="fa fa-chevron-left"></i> ansible-playbook之roles（十八）
               </a>
             
           </div>
@@ -565,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/21/ansible-playbook之变量（十）/" rel="prev" title="ansible-playbook之变量（十）">
-                ansible-playbook之变量（十） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/15/ansible_playbook之异常处理（十六）/" rel="prev" title="ansible_playbook之异常处理（十六）">
+                ansible_playbook之异常处理（十六） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -746,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例一：-根据不同操作系统，安装相同的软件"><span class="nav-number">1.</span> <span class="nav-text">示例一： 根据不同操作系统，安装相同的软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例二：-根据包含web主机名，设置yum仓库"><span class="nav-number">2.</span> <span class="nav-text">示例二： 根据包含web主机名，设置yum仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例三：-使用vars与when使用"><span class="nav-number">3.</span> <span class="nav-text">示例三： 使用vars与when使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例四：-使用when判断数字大小"><span class="nav-number">4.</span> <span class="nav-text">示例四： 使用when判断数字大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展"><span class="nav-number"></span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例五：-changed-when抑制状态"><span class="nav-number">1.</span> <span class="nav-text">示例五： changed_when抑制状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例六：-failed-when制造异常"><span class="nav-number">2.</span> <span class="nav-text">示例六： failed_when制造异常</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jinja2与Ansible"><span class="nav-number">1.</span> <span class="nav-text">Jinja2与Ansible</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ansible使用Jinja2"><span class="nav-number">2.</span> <span class="nav-text">Ansible使用Jinja2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ansible使用Jinja2注意事项"><span class="nav-number">3.</span> <span class="nav-text">Ansible使用Jinja2注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jinja2基本用法"><span class="nav-number">4.</span> <span class="nav-text">Jinja2基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本示例"><span class="nav-number">4.1.</span> <span class="nav-text">基本示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实用示例"><span class="nav-number">5.</span> <span class="nav-text">实用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#循环管理NginxProxy"><span class="nav-number">5.1.</span> <span class="nav-text">循环管理NginxProxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断管理Keepalived"><span class="nav-number">5.2.</span> <span class="nav-text">判断管理Keepalived</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义判断管理Mysql端口"><span class="nav-number">5.3.</span> <span class="nav-text">自定义判断管理Mysql端口</span></a></li></ol></li></ol></div>
             
 
           </div>
