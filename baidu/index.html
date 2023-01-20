@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8192bit | 百度 </title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.common.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/kalivid/kalivid.github.io/master/favicon.ico">
+    <style>
+        .gray{
+            background-color: lightskyblue;
+        }
+        li{
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="margin-top: 260px">
+        <div class="col-md-4 col-md-offset-3 col-xs-6 col-xs-offset-2" style="padding-right: 0">
+            <input type="text" v-model="search" @keyup="get($event)" @keydown.down="changedown"
+                   @keydown.up.prevent="changeup" class="form-control" v-focus placeholder="请输入搜索内容">
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <button type="button" @click="start" class="btn btn-primary" style="width: 100px">
+                百度一下
+            </button>
+        </div>
+        <div class="col-md-4 col-md-offset-3 col-xs-6 col-xs-offset-2" style="padding-right: 0">
+            <ul class="list-unstyled" style="margin-left:9px">
+                <li v-for="(item,index) in result" :class="{'gray':index==now}" @click="change(index)">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: ".container",
+        data: {
+            search:"",
+            result:[],
+            now:-1
+        },
+        methods:{
+            get:function (ev) {
+                if (ev.keyCode === 38||ev.keyCode === 40)return;
+                if(ev.keyCode === 13)return this.start();
+                if(this.search==="")return this.result=[];
+                this.now=-1;
+                this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+                    {params:{wd:this.search,},
+                    jsonp:'cb'}
+                    ).then(function (res) {
+                    this.result=res.data.s
+                },
+                function (res) {
+                    alert(res.status)
+                });
+            },
+            changedown:function () {
+                this.now++;
+                if(this.now === this.result.length){
+                    this.now=0;
+                }
+                this.search=this.result[this.now];
+            },
+            change:function (index) {
+                this.now = index;
+                this.search=this.result[index];
+                this.result=[];
+            },
+            changeup:function () {
+                this.now--;
+                if(this.now === -1){
+                    this.now=this.result.length-1;
+                }
+                this.search=this.result[this.now];
+
+            },
+            start:function () {
+                window.open("https://www.baidu.com/s?wd="+this.search);
+                this.search="";
+                this.result=[]
+            }
+        },
+        directives:{
+            focus:{
+                // 指定的指令
+                inserted:function (el) {
+                    el.focus()
+                }
+            }
+        }
+    })
+</script>
+
+</html>
